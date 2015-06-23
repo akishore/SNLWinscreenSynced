@@ -9,7 +9,7 @@ body{
     padding: 0;
 	font-family: 'Lato', verdana, sans-serif;
 	
-	background:url(images/bg7.png);
+	background:url(images/bg.png);
 }
 img, embed, object, video {
 	max-width:100%;
@@ -179,7 +179,25 @@ input#dicePlayer4:disabled    {
 	margin-bottom:121px;
 }
 
-#selectorHeader {
+.ellipticalButton {
+    height: 96px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+	border:0;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	background-color: #f0e781;
+	font-family: "raleway", verdana, sans-serif;
+	text-shadow: 2px 2px 2px #ccc;
+	margin-left:60px;
+	padding: 0 30px 0 30px;
+	float: left;
+	font-size: 24px;
+	font-weight:1600;
+	cursor: pointer;
+	margin-bottom:121px;
+}
+#selectorHeader  {
 	display: inline-block;
 	font-size:32px;
 	letter-spacing:6px;
@@ -190,8 +208,27 @@ input#dicePlayer4:disabled    {
 	color:#fff;
 	font-weight:800;
 	text-shadow: 4px 4px 4px #c4391d;
-	
 }
+#rightMenu {
+	float:right;
+	display: inline-block;
+	margin-top:200px;
+	padding-right:30px;
+}
+
+
+#WinnerInfo {
+	display: inline-block;
+	font-size:38px;
+	letter-spacing:6px;
+	padding-left: 100px;
+	font-family: "raleway", verdana, sans-serif;
+	padding-bottom:20px;
+	color:#fff;
+	font-weight:800;
+	text-shadow: 4px 4px 4px #c4391d;
+}
+
 #selectorFooter {
 	margin: 100px 0 0 0;
 }
@@ -202,6 +239,9 @@ input#dicePlayer4:disabled    {
 	display:inline;
 }
 .winAnimation {	
+	margin-left:100px;
+	margin-top: 100px;
+	float:left;
 	-webkit-animation-name: bounce;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-duration: 1.2s;

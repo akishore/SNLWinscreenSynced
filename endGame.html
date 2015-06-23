@@ -23,13 +23,20 @@
 	
 	</head>
 	<body onload="scriptFunction()">
-	
-	<div id="parentContainer" >
-		<div id="playerSelector">
-		<span id="WinnerInfo"></span><br />
-		<input type="button" name="RestartGame" id="RestartGame" class="circleButton" alt="Restart" value="Restart">
-		<input type="button" name="Quit" id="Quit" class="circleButton" alt="ReturnToHome" value="ReturnToHome"  >
-		<div id="selectorFooter"> 
+	<div id="wrapperIndex">
+		<div id="parentContainer" >
+			<div id="playerSelector">
+				<div id="winImage">
+				</div>
+				<div id="rightMenu">
+					<span id="WinnerInfo"> </span><br />
+					<input type="button" name="RestartGame" id="RestartGame" class="ellipticalButton" alt="Restart" value="Play Again">
+					<input type="button" name="Quit" id="Quit" class="ellipticalButton" alt="ReturnToHome" value="Back to Menu"  >
+				</div>
+				<div id="selectorFooter">
+				</div>
+			</div>
+		</div>
 	</div>
 	<script>
 		var queryString = new Array();
@@ -43,20 +50,16 @@
 				}
 			}
 		}
-		document.getElementById("WinnerInfo").innerHTML = "Player"+queryString["winId"]+" wins";
+		document.getElementById("WinnerInfo").innerHTML = "Player"+queryString["winId"]+" wins!";
 		
 		for (var i=1;i<=queryString["num"];i++){
 			var img = document.createElement("img");
-			img.setAttribute("src","images/dice_"+i+".gif")
-			img.setAttribute("id","img"+i)
 			if (i == queryString["winId"]){
+				img.setAttribute("src","images/dice_"+i+".gif")
+				img.setAttribute("id","img"+i)
 				img.setAttribute("class","winAnimation");
-			}
-			else{
-				img.setAttribute("class","loseAnimation");
-			}
-			
-			var element = document.getElementById("selectorFooter");
+			}			
+			var element = document.getElementById("winImage");
 			element.appendChild(img);
 			$(document).ready(function () {
 			/*$("#img1").effect("bounce", { times:10, distance:200 }, 400);*/
@@ -69,8 +72,6 @@
 			AniJS.run();
 			
 		}
-</script>
+	</script>
 
-
-	</div>
 </html>

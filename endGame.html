@@ -52,19 +52,14 @@
 		}
 		document.getElementById("WinnerInfo").innerHTML = "Player"+queryString["winId"]+" wins!";
 		
-		for (var i=1;i<=queryString["num"];i++){
-			var img = document.createElement("img");
-			if (i == queryString["winId"]){
-				img.setAttribute("src","images/dice_"+i+".gif")
-				img.setAttribute("id","img"+i)
-				img.setAttribute("class","winAnimation");
-			}			
-			var element = document.getElementById("winImage");
-			element.appendChild(img);
-			$(document).ready(function () {
-			/*$("#img1").effect("bounce", { times:10, distance:200 }, 400);*/
-		});
-		}	
+		var img = document.createElement("img");
+		img.setAttribute("src","images/dice_"+queryString["winId"]+".gif")
+		img.setAttribute("class","winAnimation");		
+		var element = document.getElementById("winImage");
+		element.appendChild(img);
+		$(document).ready(function () {
+		/*$("#img1").effect("bounce", { times:10, distance:200 }, 400);*/
+		});	
 	</script>
 	
 	<script>

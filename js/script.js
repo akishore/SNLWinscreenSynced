@@ -182,6 +182,16 @@ var teleport = [
 		for (var i=0;i<teleport.length;i++){
 			if (endLocation === teleport[i].startPoint){
 				
+				var messageColor;
+				if (endLocation < teleport[i].endPoint){
+					//Ladder
+					messageColor = "#8BC34A";
+				}
+				else{
+					//Snake
+					messageColor = "#EF5350";
+				}
+				
 				endLocation = teleport[i].endPoint;
 				lineNumber = teleport[i].line;
 			
@@ -199,7 +209,7 @@ var teleport = [
 				canvasMessage = teleport[i].message;
 				var container = new createjs.Container(); 
 				var textFontSize = 36;
-				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", "#ffffe7"); 
+				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", messageColor); 
 				container.addChild(text); 
 				container.x = cellSize*3; 
 				container.y = (cellSize*6) - textFontSize; 

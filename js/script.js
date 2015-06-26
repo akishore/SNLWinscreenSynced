@@ -37,6 +37,7 @@ var rightDoubleLineMaxLength = 21 * cellSize; //number of movement when moved 2 
 var leftSingleLineMinLength = cellSize; //leftBorder = cellSize
 var leftDoubleLineMinLength = -(9 * cellSize);
 var adjustmentFactor = 0.4 * cellSize;
+var containerTurn; 
 
 var countSix = 0;
 
@@ -45,31 +46,49 @@ createjs.Ticker.setFPS(60);
 
 createjs.Ticker.addEventListener("tick", stage);
 
+var playerNum = playerNumInit();
+
+if (playerNum === "1"){
+		document.getElementById("controlPlayer3").style.visibility = "hidden";
+		document.getElementById("controlPlayer4").style.visibility = "hidden";
+		// document.getElementById("player2Name").innerHTML = "Computer";
+		document.getElementById("dicePlayer2").disabled = true;
+		$('#leftCol').toggleClass('player2');
+		$('#rightCol').toggleClass('player2');
+	}
+	else if (playerNum === "2"){
+		document.getElementById("controlPlayer3").style.visibility = "hidden";
+		document.getElementById("controlPlayer4").style.visibility = "hidden";
+		$('#leftCol').toggleClass('player2');
+		$('#rightCol').toggleClass('player2');
+	}
+	else if (playerNum === "3"){
+		document.getElementById("controlPlayer4").style.visibility = "hidden";
+		$('#leftCol').toggleClass('player4');
+		$('#rightCol').toggleClass('player2');
+	}
+
 var createCircle = function(){
 	
-	window["coin" + 4] = new createjs.Shape();
-	window["coin" + 4].graphics.beginFill("#f1f294").drawCircle(0, 0, cellSize/5);
-	window["coin" + 4].x = homeLocationXCoordinate;
-	window["coin" + 4].y = homeLocationYCoordinate;
-	stage.addChild(window["coin" + 4]);
-	
-	window["coin" + 3] = new createjs.Shape();
-	window["coin" + 3].graphics.beginFill("#79c77d").drawCircle(0, 0, cellSize/5);
-	window["coin" + 3].x = homeLocationXCoordinate;
-	window["coin" + 3].y = homeLocationYCoordinate;
-	stage.addChild(window["coin" + 3]);
-	
-	window["coin" + 2] = new createjs.Shape();
-	window["coin" + 2].graphics.beginFill("#c04848").drawCircle(0, 0, cellSize/5);
-	window["coin" + 2].x = homeLocationXCoordinate;
-	window["coin" + 2].y = homeLocationYCoordinate;
-	stage.addChild(window["coin" + 2]);
-
-	window["coin" + 1] = new createjs.Shape();
-	window["coin" + 1].graphics.beginFill("#4670bf").drawCircle(0, 0, cellSize/5);
-	window["coin" + 1].x = homeLocationXCoordinate;
-	window["coin" + 1].y = homeLocationYCoordinate;
-	stage.addChild(window["coin" + 1]);
+	for (var i=playerNum;i>=1;i--){
+	window["coin" + i] = new createjs.Shape();
+		window["coin" + i].x = homeLocationXCoordinate;
+		window["coin" + i].y = homeLocationYCoordinate;
+		if (i == 1){
+			window["coin" + i].graphics.beginFill("#4670bf").drawCircle(0, 0, cellSize/5);
+		}
+		else if (i == 2){
+			window["coin" + i].graphics.beginFill("#c04848").drawCircle(0, 0, cellSize/5);
+		}
+		else if (i == 3){
+			window["coin" + i].graphics.beginFill("#79c77d").drawCircle(0, 0, cellSize/5);
+		}
+		else{
+			window["coin" + i].graphics.beginFill("#f1f294").drawCircle(0, 0, cellSize/5);
+		}
+		
+		stage.addChild(window["coin" + i]);
+	}
 		
 	stage.update();
 }
@@ -115,11 +134,11 @@ var teleport = [
 			// document.getElementById("turnInfo").innerHTML = "Player" + (activePlayer+1) +" turn";
 			stage.removeChild(containerTurn);
 			
-			var containerTurn = new createjs.Container(); 
-			var textFontSize = 20;
+			containerTurn = new createjs.Container(); 
+			var textFontSize = topBorderOfBoard/3;
 			textTurn = new createjs.Text("Player" + (activePlayer+1) +" turn", textFontSize +"px raleway", "#fff"); 
 			containerTurn.addChild(textTurn); 
-			containerTurn.x = (720/2); 
+			containerTurn.x = (cellSize*10)/2; 
 			containerTurn.y = cellSize/2; 
 			//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
 			stage.addChild(containerTurn); 
@@ -372,16 +391,14 @@ var teleport = [
 		if (winStatus === 1){
 			createjs.Tween.get(window["coin" + (activePlayer + 1)], { loop: false })
 		    .to({ x: lineStartPoint}, 1000)
-			.call(incrementPlayer());
-			
-			
-			 
+			.call(incrementPlayer()); 
 		 }
 		if (winStatus === -1){
 			incrementPlayer();
 		}
 		else{
 			speed=100*steps;
+			document.getElementById("dicePlayer"+(activePlayer+1)).disabled = true;
 			if (player[activePlayer].lineNumber%2 != 0){
 				moveRight();
 			}
@@ -429,30 +446,6 @@ var teleport = [
 		{onboard:0,currentLocation:0,xCoordinate:homeLocationXCoordinate,yCoordinate:homeLocationYCoordinate,lineNumber:1},
 	];
 	var ran;
-	var playerNum = playerNumInit();
-	// document.getElementById("parentContainer_gameOver").style.visibility.hidden = true;
-	// document.getElementById("parentContainer").style.visibility.hidden = false;
-
-	
-	if (playerNum === "1"){
-		document.getElementById("controlPlayer3").style.visibility = "hidden";
-		document.getElementById("controlPlayer4").style.visibility = "hidden";
-		// document.getElementById("player2Name").innerHTML = "Computer";
-		document.getElementById("dicePlayer2").disabled = true;
-		$('#leftCol').toggleClass('player2');
-		$('#rightCol').toggleClass('player2');
-	}
-	else if (playerNum === "2"){
-		document.getElementById("controlPlayer3").style.visibility = "hidden";
-		document.getElementById("controlPlayer4").style.visibility = "hidden";
-		$('#leftCol').toggleClass('player2');
-		$('#rightCol').toggleClass('player2');
-	}
-	else if (playerNum === "3"){
-		document.getElementById("controlPlayer4").style.visibility = "hidden";
-		$('#leftCol').toggleClass('player4');
-		$('#rightCol').toggleClass('player2');
-	}
 	
 	var win = 0;
 	var activePlayer = 0;

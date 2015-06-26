@@ -6,6 +6,7 @@
 		<script src="js/easeljs-0.8.0.min.js"></script>
 		<script src="js/tweenjs-0.6.0.min.js"></script>
 		<script type="text/javascript" src="js/CSSPlugin.js"></script>
+		<script src="js/script.js"></script>
 		<!--<link href='http://fonts.googleapis.com/css?family=Raleway|Audiowide' rel='stylesheet' type='text/css'> -->
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="js/anijs-min.js"></script> 
@@ -50,6 +51,20 @@
 		$(document).ready(function () {
 		/*$("#img1").effect("bounce", { times:10, distance:200 }, 400);*/
 		});	
+				
+		$(function () {
+			$("#RestartGame").bind("click", function () {
+				var url = "game.html?playerNum=" + queryString["num"];				window.location.href = url;
+			});
+			
+			$("#Quit").bind("click", function () {
+					var url = "index.html";
+					window.location.href = url;
+			});
+		});
+		
+		window.history.forward();
+		
 	</script>
 	
 	<script>

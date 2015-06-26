@@ -116,10 +116,10 @@ var teleport = [
 			stage.removeChild(containerTurn);
 			
 			var containerTurn = new createjs.Container(); 
-			var textFontSize = 12;
-			textTurn = new createjs.Text("Player" + (activePlayer+1) +" turn", textFontSize +"px verdana", "#fff"); 
+			var textFontSize = 20;
+			textTurn = new createjs.Text("Player" + (activePlayer+1) +" turn", textFontSize +"px raleway", "#fff"); 
 			containerTurn.addChild(textTurn); 
-			containerTurn.x = (720/3); 
+			containerTurn.x = (720/2); 
 			containerTurn.y = cellSize/2; 
 			//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
 			stage.addChild(containerTurn); 
@@ -179,16 +179,16 @@ var teleport = [
 				player[activePlayer].currentLocation = teleport[i].endPoint;
 				canvasMessage = teleport[i].message;
 				var container = new createjs.Container(); 
-				var textFontSize = 16;
-				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", "#ffa250"); 
+				var textFontSize = 36;
+				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", "#ffffe7"); 
 				container.addChild(text); 
-				container.x = (720/3); 
-				container.y = (720/2) - textFontSize; 
+				container.x = cellSize*3; 
+				container.y = (cellSize*6) - textFontSize; 
 				container.name = canvasMessage; 
 				container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
 				stage.addChild(container); 
 				stage.update();
-				createjs.Tween.get(text).set({alpha:1, regX: 5, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:2, scaleY:2}, 1300).call(setTimeout);
+				createjs.Tween.get(text).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
 				function setTimeout() {
 					stage.removeChild(container);
 			//Tween complete
@@ -239,15 +239,16 @@ var teleport = [
 			var winMessage = "Player" + [activePlayer + 1] + " wins"
 			var container = new createjs.Container(); 
 			var textFontSize = 40;
+			//check why
 			text = new createjs.Text(winMessage, textFontSize +"px bangers", "#ffa250"); 
 			container.addChild(text); 
-			container.x = (720/3); 
-			container.y = (720/2) - textFontSize; 
+			container.x = cellSize*4; 
+			container.y = (cellSize*6) - textFontSize; 
 			//container.name = canvasMessage; 
 			container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
 			stage.addChild(container); 
 			stage.update();
-			createjs.Tween.get(text).set({alpha:1, regX: 5, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:2, scaleY:2}, 100);
+			createjs.Tween.get(text).set({alpha:1, regX: 5, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:2, scaleY:2}, 100).to({alpha:1, scaleX:2, scaleY:2}, 500);
 		}
 		else{
 			winStatus = -1;
@@ -478,18 +479,18 @@ var teleport = [
 	var ranValueOnCanvas = function(ran){
 		var container = new createjs.Container(); 
 		var textFontSize = 60;
-		text = new createjs.Text(ran, textFontSize +"px bangers", "#ffa250"); 
+		text = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7"); 
 			
 		container.addChild(text); 
-		container.x = (720/2) - textFontSize/4; 
-		container.y = (720/2) - textFontSize; 
+		container.x = (cellSize*6) - textFontSize/4; 
+		container.y = (cellSize*6) - textFontSize; 
 		container.name = ran; 
 		
 		container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
 		stage.addChild(container); 
 		stage.update();
 		
-		createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
+		createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
 		
 		function setTimeout() {
 			stage.removeChild(container);

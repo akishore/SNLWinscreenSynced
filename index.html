@@ -17,6 +17,12 @@
 	</head>
 	<body onload="scriptFunction()">
 	
+	<audio id="PageLoadAudio" src="sound/Aadat.mp3"></audio>
+	
+	<audio id="ClickAudio" src="sound/Victory.mp3"></audio>
+		<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
+	</audio> -->
+	
 	<div id="wrapperIndex">
 	<!-- <div id="topBar" class="bar">
 		Welcome to 21st Century Snake & Ladder
@@ -39,18 +45,26 @@
 	<script type="text/javascript">
 		$(function () {
             $("#OnePlayer").bind("click", function () {
+				document.getElementById('PageLoadAudio').pause();
+				document.getElementById('ClickAudio').play();
                 var url = "game.html?playerNum=" + encodeURIComponent($("#OnePlayer").val());
 				window.location.href = url;
             });
             $("#TwoPlayers").bind("click", function () {
+				document.getElementById('PageLoadAudio').pause();
+				document.getElementById('ClickAudio').play();
                 var url = "game.html?playerNum=" + encodeURIComponent($("#TwoPlayers").val());
 				window.location.href = url;
             });
             $("#ThreePlayers").bind("click", function () {
+				document.getElementById('PageLoadAudio').pause();
+				document.getElementById('ClickAudio').play();
                 var url = "game.html?playerNum=" + encodeURIComponent($("#ThreePlayers").val());
 				window.location.href = url;
             });
             $("#FourPlayers").bind("click", function () {
+				document.getElementById('PageLoadAudio').pause();
+				document.getElementById('ClickAudio').play();
                 var url = "game.html?playerNum=" + encodeURIComponent($("#FourPlayers").val());
 				window.location.href = url;
             });			
@@ -60,6 +74,18 @@
 	<script>
 		function scriptFunction() {
 			AniJS.run();
+		 var audio = document.createElement("PageLoadAudio");
+
+audio.addEventListener("canplaythrough", function () {
+    
+        audio.play();
+        setTimeout(function(){
+            audio.pause();
+            alert("Audio Stop Successfully");
+        },
+        3000);
+        
+    }, false);
 		}
 </script>
 	

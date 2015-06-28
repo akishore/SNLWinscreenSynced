@@ -16,6 +16,9 @@
 		</script>
 	</head>
 	<body onload="scriptFunction()">
+	
+	<audio id="VictoryAudio" src="sound/Victory.mp3"></audio>
+	
 	<div id="wrapperIndex">
 		<div id="parentContainer" >
 			<div id="playerSelector">
@@ -56,7 +59,8 @@
 				
 		$(function () {
 			$("#RestartGame").bind("click", function () {
-				var url = "game.html?playerNum=" + queryString["num"];				window.location.href = url;
+				var url = "game.html?playerNum=" + queryString["num"];
+				window.location.href = url;
 			});
 			
 			$("#Quit").bind("click", function () {
@@ -72,7 +76,7 @@
 	<script>
 		function scriptFunction() {
 			AniJS.run();
-			
+			document.getElementById('VictoryAudio').play();
 		}
 	</script>
 

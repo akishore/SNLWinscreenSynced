@@ -19,6 +19,8 @@
 	
 	<audio id="VictoryAudio" src="sound/Victory.mp3"></audio>
 	
+	<audio id="ClickAudio" src="sound/clickAudio.mp3"></audio>
+	
 	<div id="wrapperIndex">
 		<div id="parentContainer" >
 			<div id="playerSelector">
@@ -59,13 +61,24 @@
 				
 		$(function () {
 			$("#RestartGame").bind("click", function () {
-				var url = "game.html?playerNum=" + queryString["num"];
-				window.location.href = url;
+				document.getElementById('VictoryAudio').pause();
+				document.getElementById('ClickAudio').play();
+				setTimeout(function(){
+						var url = "game.html?playerNum=" + queryString["num"];
+						window.location.href = url;
+						},
+					500);
+				
 			});
 			
 			$("#Quit").bind("click", function () {
-					var url = "index.html";
-					window.location.href = url;
+				document.getElementById('VictoryAudio').pause();
+				document.getElementById('ClickAudio').play();
+				setTimeout(function(){
+						var url = "index.html";
+						window.location.href = url;
+						},
+					500);
 			});
 		});
 		

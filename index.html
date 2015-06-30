@@ -19,7 +19,8 @@
 	
 	<audio id="PageLoadAudio" src="sound/Aadat.mp3"></audio>
 	
-	<audio id="ClickAudio" src="sound/Victory.mp3"></audio>
+	<audio id="ClickAudio" src="sound/clickAudio.mp3"></audio>
+	
 		<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
 	</audio> -->
 	
@@ -47,45 +48,38 @@
             $("#OnePlayer").bind("click", function () {
 				document.getElementById('PageLoadAudio').pause();
 				document.getElementById('ClickAudio').play();
-                var url = "game.html?playerNum=" + encodeURIComponent($("#OnePlayer").val());
-				window.location.href = url;
+				afterClickEvent("#OnePlayer");
             });
             $("#TwoPlayers").bind("click", function () {
 				document.getElementById('PageLoadAudio').pause();
 				document.getElementById('ClickAudio').play();
-                var url = "game.html?playerNum=" + encodeURIComponent($("#TwoPlayers").val());
-				window.location.href = url;
+				afterClickEvent("#TwoPlayers");                
             });
             $("#ThreePlayers").bind("click", function () {
 				document.getElementById('PageLoadAudio').pause();
 				document.getElementById('ClickAudio').play();
-                var url = "game.html?playerNum=" + encodeURIComponent($("#ThreePlayers").val());
-				window.location.href = url;
+				afterClickEvent("#ThreePlayers");
             });
             $("#FourPlayers").bind("click", function () {
 				document.getElementById('PageLoadAudio').pause();
 				document.getElementById('ClickAudio').play();
-                var url = "game.html?playerNum=" + encodeURIComponent($("#FourPlayers").val());
-				window.location.href = url;
-            });			
+				afterClickEvent("#FourPlayers");
+            });	
+			
+			function afterClickEvent(playerNumId){
+				setTimeout(function(){
+						var url = "game.html?playerNum=" + encodeURIComponent($(playerNumId).val());
+						window.location.href = url;
+						},
+					500);
+			}
         });
 	</script>
 	
 	<script>
 		function scriptFunction() {
 			AniJS.run();
-		 var audio = document.createElement("PageLoadAudio");
-
-audio.addEventListener("canplaythrough", function () {
-    
-        audio.play();
-        setTimeout(function(){
-            audio.pause();
-            alert("Audio Stop Successfully");
-        },
-        3000);
-        
-    }, false);
+			document.getElementById('PageLoadAudio').play();
 		}
 </script>
 	

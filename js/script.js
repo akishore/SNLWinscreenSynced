@@ -179,16 +179,21 @@ var teleport = [
 	
 	var checkTeleport = function() {
 		var teleportStatus=0;
+		var teleportType;
 		for (var i=0;i<teleport.length;i++){
 			if (endLocation === teleport[i].startPoint){
 				
 				var messageColor;
 				if (endLocation < teleport[i].endPoint){
 					//Ladder
+					teleportType = "Ladder";
+					document.getElementById("LadderAudio").play();
 					messageColor = "#8BC34A";
 				}
 				else{
 					//Snake
+					teleportType = "Snake";
+					document.getElementById("SnakeAudio").play();
 					messageColor = "#EF5350";
 				}
 				
@@ -219,6 +224,13 @@ var teleport = [
 				stage.update();
 				createjs.Tween.get(text).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
 				function setTimeout() {
+					if (teleportType === "Ladder"){
+						document.getElementById("LadderAudio").pause();
+					}
+					else{
+						document.getElementById("SnakeAudio").pause();
+					}
+					
 					stage.removeChild(container);
 			//Tween complete
 				}
@@ -502,7 +514,7 @@ var teleport = [
 	}
 
 	$('#dicePlayer1').click(function(){
-		//document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -510,7 +522,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer2').click(function(){
-		//document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -518,7 +530,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer3').click(function(){
-		// //document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -526,7 +538,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer4').click(function(){
-		// //document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

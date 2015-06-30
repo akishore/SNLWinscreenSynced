@@ -179,8 +179,23 @@ var teleport = [
 	
 	var checkTeleport = function() {
 		var teleportStatus=0;
+		var teleportType;
 		for (var i=0;i<teleport.length;i++){
 			if (endLocation === teleport[i].startPoint){
+				
+				var messageColor;
+				if (endLocation < teleport[i].endPoint){
+					//Ladder
+					teleportType = "Ladder";
+					document.getElementById("LadderAudio").play();
+					messageColor = "#8BC34A";
+				}
+				else{
+					//Snake
+					teleportType = "Snake";
+					document.getElementById("SnakeAudio").play();
+					messageColor = "#EF5350";
+				}
 				
 				endLocation = teleport[i].endPoint;
 				lineNumber = teleport[i].line;
@@ -199,7 +214,7 @@ var teleport = [
 				canvasMessage = teleport[i].message;
 				var container = new createjs.Container(); 
 				var textFontSize = 36;
-				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", "#ffffe7"); 
+				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", messageColor); 
 				container.addChild(text); 
 				container.x = cellSize*3; 
 				container.y = (cellSize*6) - textFontSize; 
@@ -209,6 +224,13 @@ var teleport = [
 				stage.update();
 				createjs.Tween.get(text).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
 				function setTimeout() {
+					if (teleportType === "Ladder"){
+						document.getElementById("LadderAudio").pause();
+					}
+					else{
+						document.getElementById("SnakeAudio").pause();
+					}
+					
 					stage.removeChild(container);
 			//Tween complete
 				}
@@ -492,7 +514,7 @@ var teleport = [
 	}
 
 	$('#dicePlayer1').click(function(){
-		//document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -500,7 +522,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer2').click(function(){
-		//document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -508,7 +530,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer3').click(function(){
-		// //document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -516,7 +538,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer4').click(function(){
-		// //document.getElementById("dice").disabled = true;
+		document.getElementById("DiceRollAudio").play();
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

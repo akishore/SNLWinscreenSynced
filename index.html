@@ -1,87 +1,14 @@
 <html>
 	<head>
-		<title>Snakes and Ladder Game</title>
-		
-		<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width height=device-height, target-densitydpi=device-dpi" />
-		<script src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/easeljs-0.8.0.min.js"></script>
-		<script src="js/tweenjs-0.6.0.min.js"></script>
-		<script type="text/javascript" src="js/CSSPlugin.js"></script>
-		<!--<link href='http://fonts.googleapis.com/css?family=Raleway|Audiowide' rel='stylesheet' type='text/css'> -->
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		
-	<script src="js/anijs-min.js"></script> 
-	<link rel="stylesheet" type="text/css" href="animate.css" />
-	
-	
 	</head>
-	<body onload="scriptFunction()">
-	
-	<audio id="PageLoadAudio" src="sound/Aadat.mp3"></audio>
-	
-	<audio id="ClickAudio" src="sound/clickAudio.mp3"></audio>
-	
-		<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
-	</audio> -->
-	
-	<div id="wrapperIndex">
-	<!-- <div id="topBar" class="bar">
-		Welcome to 21st Century Snake & Ladder
-		</div> -->
-		<div id="parentContainer" >
-			<div id="playerSelector">
-				<span id="selectorHeader"> Select Number of Players </span><br />
-				<input type="button" name="One Player" id="OnePlayer" class="circleButton" alt="Number1" value="1"  data-anijs="if: mouseover, do: jello animated">
-				<input type="button" name="Two Players" id="TwoPlayers" class="circleButton" alt="Number2" value="2"  data-anijs="if:mouseover, do: jello animated">
-				<input type="button" name="Three Players" id="ThreePlayers" class="circleButton" alt="Number3" value="3"  data-anijs="if: mouseover, do: jello animated">
-				<input type="button" name="Four Players" id="FourPlayers" class="circleButton" alt="Number4" value="4"  data-anijs="if: mouseover, do: jello animated">
-				<div id="selectorFooter"> 
-				<img src="images/dice_1.gif">
-				<img src="images/dice_2.gif">
-				<img src="images/dice_3.gif">
-				<img src="images/dice_4.gif"></div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-		$(function () {
-            $("#OnePlayer").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#OnePlayer");
-            });
-            $("#TwoPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#TwoPlayers");                
-            });
-            $("#ThreePlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#ThreePlayers");
-            });
-            $("#FourPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#FourPlayers");
-            });	
-			
-			function afterClickEvent(playerNumId){
-				setTimeout(function(){
-						var url = "game.html?playerNum=" + encodeURIComponent($(playerNumId).val());
-						window.location.href = url;
+	<body>
+		<img src="splash.gif">
+		
+		<script>
+			setTimeout(function(){
+						window.location.href = "home.html";
 						},
-					500);
-			}
-        });
-	</script>
-	
-	<script>
-		function scriptFunction() {
-			AniJS.run();
-			document.getElementById('PageLoadAudio').play();
-		}
-</script>
-	
+					2500);
+		</script>
 	</body>
 </html>

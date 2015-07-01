@@ -110,8 +110,8 @@
 	
 	// Get canvas
 	var canvas = document.getElementById("splash");
-	canvas.width = 640;
-	canvas.height = 360;
+	canvas.width = 1280;
+	canvas.height = 720;
 	
 	// Create sprite sheet
 	coinImage = new Image();	
@@ -119,10 +119,10 @@
 	// Create sprite
 	coin = sprite({
 		context: canvas.getContext("2d"),
-		width: 23040,
-		height: 360,
+		width: 26880,
+		height: 720,
 		image: coinImage,
-		numberOfFrames: 36,
+		numberOfFrames: 21,
 		ticksPerFrame: 3
 	});
 	

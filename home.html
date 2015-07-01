@@ -83,7 +83,12 @@
 	<script>
 		function scriptFunction() {
 			AniJS.run();
-			document.getElementById('PageLoadAudio').play();
+			var audio = document.createElement('audio');
+			audio.play();
+			setTimeout(function(){
+				document.getElementById('PageLoadAudio').play();
+			},1000)
+			
 		}
 </script>
 	

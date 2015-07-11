@@ -494,7 +494,7 @@ var teleport = [
 	var ranValueOnCanvas = function(ran){
 		var container = new createjs.Container(); 
 		var textFontSize = 60;
-		text = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7"); 
+		text = new createjs.Text(ran, textFontSize +"px " + "fonts/Bangers.woff2", "#ffffe7"); 
 			
 		container.addChild(text); 
 		container.x = (cellSize*6) - textFontSize/4; 

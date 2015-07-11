@@ -18,11 +18,11 @@
 	<body onload="scriptFunction()">
 	
 	
-	<audio id="PageLoadAudio" src="sound/Aadat.mp3"></audio>
+	<audio id="PageLoadAudio" src="file:///sound/Aadat.mp3"></audio>
 	
-	<audio id="ClickAudio" src="sound/clickAudio.mp3"></audio>
+	<audio id="ClickAudio" src="file:///sound/clickAudio.mp3"></audio>
 	
-	<audio src="sound/Aadat.ogg" autoplay></audio>
+	<audio src="file:///sound/Aadat.ogg" autoplay></audio>
 	
 		<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
 	</audio> -->
@@ -83,12 +83,7 @@
 	<script>
 		function scriptFunction() {
 			AniJS.run();
-			var audio = document.createElement('audio');
-			audio.play();
-			setTimeout(function(){
-				document.getElementById('PageLoadAudio').play();
-			},1000)
-			
+			document.getElementById('PageLoadAudio').play();
 		}
 </script>
 	

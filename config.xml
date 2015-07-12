@@ -45,6 +45,10 @@
 
     <!-- Plugins -->
 
+	<feature name="Media">
+      <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+  `</feature>
+	
     <!-- Core plugins -->
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />

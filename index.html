@@ -2,12 +2,14 @@
 	<head>
 		<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width height=device-height, target-densitydpi=device-dpi" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		
+		<script type="text/javascript" src="phonegap.js"></script>
 	<script src="js/anijs-min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="animate.css" />
 	</head>
 	
 	<body onload="scriptFunction()">
+	
+	<audio id="PageLoadAudio" src="/android_asset/www/sound/Aadat.mp3"></audio>
 		<div id="wrapperIndex">
 			<div id="splashContainer" >
 				<div id="animatedText" data-anijs="if: mouseover,do: flip animated" >
@@ -25,6 +27,19 @@
 		function scriptFunction() {
 			AniJS.run();
 			//document.getElementById('PageLoadAudio').play();
+		}
+		
+		function playAudio(id) {
+		var audioElement = document.getElementById('PageLoadAudio');
+		var url = audioElement.getAttribute('src');
+		var my_media = new Media(url,
+				// success callback
+				 function () { console.log("playAudio():Audio Success"); },
+				// error callback
+				 function (err) { console.log("playAudio():Audio Error: " + err); }
+		);
+			   // Play audio
+		my_media.play();
 		}
 		</script>
 	</body>

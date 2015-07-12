@@ -21,6 +21,7 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
+	
     <preference name="permissions"                value="none"/>
 
     <!-- Customize your app and platform with the preference element. -->
@@ -44,10 +45,12 @@
     -->
 
     <!-- Plugins -->
-
-	<feature name="Media">
+	<preference name="phonegap-version" value="2.9.0"/> 
+	<feature name="http://api.phonegap.com/1.0/device"/> 
+	<feature name="http://api.phonegap.com/1.0/media" /> 
+	<!-- <feature name="Media">
       <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
-  `</feature>
+  `</feature> -->
 	
     <!-- Core plugins -->
     <gap:plugin name="org.apache.cordova.battery-status" />

@@ -12,13 +12,13 @@
 		
 	<script src="js/anijs-min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="animate.css" />
-	
+	<script type="text/javascript" src="phonegap.js"></script>
 	
 	</head>
 	<body onload="scriptFunction()">
 	
 	
-	<audio id="PageLoadAudio" src="file:///sound/Aadat.mp3"></audio>
+	<audio id="PageLoadAudio" src="/android_asset/www/sound/Aadat.mp3"></audio>
 	
 	<audio id="ClickAudio" src="file:///sound/clickAudio.mp3"></audio>
 	
@@ -77,6 +77,7 @@
 						},
 					500);
 			}
+			
         });
 	</script>
 	
@@ -84,8 +85,9 @@
 		function scriptFunction() {
 			AniJS.run();
 			//document.getElementById('PageLoadAudio').play();
+			playAudio();
 		}
-		function playAudio(id) {
+		function playAudio() {
 		var audioElement = document.getElementById('PageLoadAudio');
 		var url = audioElement.getAttribute('src');
 		var my_media = new Media(url,
@@ -97,6 +99,7 @@
 			   // Play audio
 		my_media.play();
 		}
+		
 </script>
 	
 	</body>

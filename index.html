@@ -5,6 +5,7 @@
 		<script type="text/javascript" src="phonegap.js"></script>
 	<script src="js/anijs-min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="animate.css" />
+	<script type="text/javascript" src="phonegap.js"></script>
 	</head>
 	
 	<body onload="scriptFunction()">
@@ -27,9 +28,10 @@
 		function scriptFunction() {
 			AniJS.run();
 			//document.getElementById('PageLoadAudio').play();
+			playAudio();
 		}
 		
-		function playAudio(id) {
+		function playAudio() {
 		var audioElement = document.getElementById('PageLoadAudio');
 		var url = audioElement.getAttribute('src');
 		var my_media = new Media(url,

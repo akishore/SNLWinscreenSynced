@@ -48,11 +48,10 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	var my_media;
 		$(function () {
             $("#OnePlayer").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#OnePlayer");
+				my_media.pause();
             });
             $("#TwoPlayers").bind("click", function () {
 				document.getElementById('PageLoadAudio').pause();
@@ -79,18 +78,16 @@
 			}
 			
         });
-	</script>
-	
-	<script>
+
 		function scriptFunction() {
 			AniJS.run();
-			document.getElementById('PageLoadAudio').play();
-			//playAudio();
+			//document.getElementById('PageLoadAudio').play();
+			playAudio('PageLoadAudio');
 		}
-		function playAudio() {
-		var audioElement = document.getElementById('PageLoadAudio');
+		var playAudio = function(audioID) {
+		var audioElement = document.getElementById(audioID);
 		var url = audioElement.getAttribute('src');
-		var my_media = new Media(url,
+		my_media = new Media(url,
 				// success callback
 				 function () { console.log("playAudio():Audio Success"); },
 				// error callback

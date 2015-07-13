@@ -52,20 +52,22 @@
 		$(function () {
             $("#OnePlayer").bind("click", function () {
 				my_media.pause();
+				playAudio('ClickAudio');
+				//afterClickEvent("#OnePlayer");      
             });
             $("#TwoPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#TwoPlayers");                
             });
             $("#ThreePlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#ThreePlayers");
             });
             $("#FourPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#FourPlayers");
             });	
 			

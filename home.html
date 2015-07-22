@@ -12,29 +12,30 @@
 		
 	<script src="js/anijs-min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="animate.css" />
-	
+	<script type="text/javascript" src="phonegap.js"></script>
 	
 	</head>
 	<body onload="scriptFunction()">
 	
-	<audio id="PageLoadAudio" src="sound/bgMusic.wav" loop></audio>
 	
-	<audio id="ClickAudio" src="sound/clickNormal.wav"></audio>
-	
-		<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
+	<audio id="PageLoadAudio" src="/android_asset/www/sound/bgMusic.wav"></audio>
+	<audio id="ClickAudio" src="/android_asset/www/sound/clickNormal.wav"></audio>
+	<!-- <audio src="file:///sound/Aadat.ogg" autoplay></audio> -->
+	<!-- <source src="sound/Aadat.mp3" type="audio/mpeg" />
 	</audio> -->
 	
 	<div id="wrapperIndex">
+		
 	<!-- <div id="topBar" class="bar">
 		Welcome to 21st Century Snake & Ladder
 		</div> -->
 		<div id="parentContainer" >
 			<div id="playerSelector">
 				<span id="selectorHeader"> Select Number of Players </span><br />
-				<input type="button" name="One Player" id="OnePlayer" class="circleButton" alt="Number1" value="1"  data-anijs="if: mouseover, do: jello animated">
-				<input type="button" name="Two Players" id="TwoPlayers" class="circleButton" alt="Number2" value="2"  data-anijs="if:mouseover, do: jello animated">
-				<input type="button" name="Three Players" id="ThreePlayers" class="circleButton" alt="Number3" value="3"  data-anijs="if: mouseover, do: jello animated">
-				<input type="button" name="Four Players" id="FourPlayers" class="circleButton" alt="Number4" value="4"  data-anijs="if: mouseover, do: jello animated">
+				<input type="button" name="OnePlayer" id="OnePlayer" class="circleButton" alt="Number1" value="1"  data-anijs="if: mouseover, do: jello animated">
+				<input type="button" name="TwoPlayers" id="TwoPlayers" class="circleButton" alt="Number2" value="2"  data-anijs="if:mouseover, do: jello animated">
+				<input type="button" name="ThreePlayers" id="ThreePlayers" class="circleButton" alt="Number3" value="3"  data-anijs="if: mouseover, do: jello animated">
+				<input type="button" name="FourPlayers" id="FourPlayers" class="circleButton" alt="Number4" value="4"  data-anijs="if: mouseover, do: jello animated">
 				<div id="selectorFooter"> 
 				<img src="images/dice_1.gif">
 				<img src="images/dice_2.gif">
@@ -44,25 +45,27 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	var my_media;
 		$(function () {
             $("#OnePlayer").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
-				afterClickEvent("#OnePlayer");
+				OnePlayer.setSoundEffectsEnabled(false);
+				my_media.pause();
+				playAudio('ClickAudio');
+				afterClickEvent("#OnePlayer");      
             });
             $("#TwoPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#TwoPlayers");                
             });
             $("#ThreePlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#ThreePlayers");
             });
             $("#FourPlayers").bind("click", function () {
-				document.getElementById('PageLoadAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				afterClickEvent("#FourPlayers");
             });	
 			
@@ -73,14 +76,27 @@
 						},
 					500);
 			}
+			
         });
-	</script>
-	
-	<script>
+
 		function scriptFunction() {
 			AniJS.run();
-			document.getElementById('PageLoadAudio').play();
+			//document.getElementById('PageLoadAudio').play();
+			playAudio('PageLoadAudio');
 		}
+		var playAudio = function(audioID) {
+		var audioElement = document.getElementById(audioID);
+		var url = audioElement.getAttribute('src');
+		my_media = new Media(url,
+				// success callback
+				 function () { console.log("playAudio():Audio Success"); },
+				// error callback
+				 function (err) { console.log("playAudio():Audio Error: " + err); }
+		);
+			   // Play audio
+		my_media.play();
+		}
+		
 </script>
 	
 	</body>

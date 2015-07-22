@@ -19,7 +19,7 @@
 	
 	<audio id="VictoryAudio" src="sound/Victory.mp3"></audio>
 	
-	<audio id="ClickAudio" src="sound/clickAudio.mp3"></audio>
+	<audio id="ClickAudio" src="sound/clickNormal.wav"></audio>
 	
 	<div id="wrapperIndex">
 		<div id="parentContainer" >
@@ -37,6 +37,7 @@
 		</div>
 	</div>
 	<script>
+		var my_media;
 		var queryString = new Array();
 		if(queryString.length === 0){
 			if (window.location.search.split('?').length > 1){
@@ -61,8 +62,10 @@
 				
 		$(function () {
 			$("#RestartGame").bind("click", function () {
-				document.getElementById('VictoryAudio').pause();
-				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
+//				document.getElementById('VictoryAudio').pause();
+//				document.getElementById('ClickAudio').play();
 				setTimeout(function(){
 						var url = "game.html?playerNum=" + queryString["num"];
 						window.location.href = url;
@@ -72,8 +75,10 @@
 			});
 			
 			$("#Quit").bind("click", function () {
-				document.getElementById('VictoryAudio').pause();
-				document.getElementById('ClickAudio').play();
+//				document.getElementById('VictoryAudio').pause();
+//				document.getElementById('ClickAudio').play();
+				my_media.pause();
+				playAudio('ClickAudio');
 				setTimeout(function(){
 						var url = "index.html";
 						window.location.href = url;
@@ -89,7 +94,21 @@
 	<script>
 		function scriptFunction() {
 			AniJS.run();
-			document.getElementById('VictoryAudio').play();
+		//	document.getElementById('VictoryAudio').play();
+			playAudio('VictoryAudio');
+		}		
+		var playAudio = function(audioID) {
+		var audioElement = document.getElementById(audioID);
+		var url = audioElement.getAttribute('src');
+		my_media = new Media(url,
+				// success callback
+				 function () { console.log("playAudio():Audio Success"); },
+				// error callback
+				 function (err) { console.log("playAudio():Audio Error: " + err); }
+		);
+			   // Play audio
+		my_media.play();
+
 		}
 	</script>
 

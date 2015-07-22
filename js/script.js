@@ -1,4 +1,18 @@
 var main = function(){
+var my_media;
+
+var playAudio = function(audioID) {
+	var audioElement = document.getElementById(audioID);
+	var url = audioElement.getAttribute('src');
+	my_media = new Media(url,
+			// success callback
+			 function () { console.log("playAudio():Audio Success"); },
+			// error callback
+			 function (err) { console.log("playAudio():Audio Error: " + err); }
+	);
+		   // Play audio
+	my_media.play();
+}
 
 var playerNumInit = function(){
 	var queryString = new Array();
@@ -187,13 +201,15 @@ var teleport = [
 				if (endLocation < teleport[i].endPoint){
 					//Ladder
 					teleportType = "Ladder";
-					document.getElementById("LadderAudio").play();
+				//	document.getElementById("LadderAudio").play();
+					playAudio("LadderAudio");
 					messageColor = "#8BC34A";
 				}
 				else{
 					//Snake
 					teleportType = "Snake";
-					document.getElementById("SnakeAudio").play();
+				//	document.getElementById("SnakeAudio").play();
+					playAudio("SnakeAudio");
 					messageColor = "#EF5350";
 				}
 				
@@ -224,13 +240,13 @@ var teleport = [
 				stage.update();
 				createjs.Tween.get(text).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
 				function setTimeout() {
-					if (teleportType === "Ladder"){
+					/*if (teleportType === "Ladder"){
 						document.getElementById("LadderAudio").pause();
 					}
 					else{
 						document.getElementById("SnakeAudio").pause();
-					}
-					
+					} */
+					my_media.pause();
 					stage.removeChild(container);
 			//Tween complete
 				}
@@ -281,7 +297,7 @@ var teleport = [
 			var container = new createjs.Container(); 
 			var textFontSize = 40;
 			//check why
-			text = new createjs.Text(winMessage, textFontSize +"px bangers", "#ffa250"); 
+			text = new createjs.Text(winMessage, textFontSize +"px" + "fonts/Bangers.ttf", "#ffa250"); 
 			container.addChild(text); 
 			container.x = cellSize*4; 
 			container.y = (cellSize*6) - textFontSize; 
@@ -514,7 +530,8 @@ var teleport = [
 	}
 
 	$('#dicePlayer1').click(function(){
-		document.getElementById("DiceRollAudio").play();
+		//document.getElementById("DiceRollAudio").play();
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -522,7 +539,8 @@ var teleport = [
 	});
 	
 	$('#dicePlayer2').click(function(){
-		document.getElementById("DiceRollAudio").play();
+		//document.getElementById("DiceRollAudio").play();
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -530,7 +548,8 @@ var teleport = [
 	});
 	
 	$('#dicePlayer3').click(function(){
-		document.getElementById("DiceRollAudio").play();
+		//document.getElementById("DiceRollAudio").play();
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -538,7 +557,8 @@ var teleport = [
 	});
 	
 	$('#dicePlayer4').click(function(){
-		document.getElementById("DiceRollAudio").play();
+		//document.getElementById("DiceRollAudio").play();
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

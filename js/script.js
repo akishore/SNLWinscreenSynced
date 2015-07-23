@@ -508,23 +508,42 @@ var teleport = [
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
-		var container = new createjs.Container(); 
-		var textFontSize = 60;
-		text = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7"); 
+		// var container = new createjs.Container(); 
+		// var textFontSize = 60;
+		// text = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7"); 
 			
-		container.addChild(text); 
-		container.x = (cellSize*6) - textFontSize/4; 
-		container.y = (cellSize*6) - textFontSize; 
-		container.name = ran; 
+		// container.addChild(text); 
+		// container.x = (cellSize*6) - textFontSize/4; 
+		// container.y = (cellSize*6) - textFontSize; 
+		// container.name = ran; 
 		
-		container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
-		stage.addChild(container); 
-		stage.update();
+		// container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
+		// stage.addChild(container); 
+		// stage.update();
 		
-		createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
+		// createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
 		
-		function setTimeout() {
-			stage.removeChild(container);
+		spriteSheet = new createjs.SpriteSheet({
+			images: ["dice.png"],
+			frames: [[0,0,224,224],[224,0,448,224],[448,0,672,224],[0,224,224,448],[224,224,448,448],[448,224,672,448]],
+			animations:{
+				show1 : 0,
+				show2 : 1,
+				show3 : 2,
+				show4 : 3,
+				show5 : 4,
+				show6 : 5,
+			}
+		});
+		
+		bmpAnimation = new createjs.BitmapAnimation(spriteSheet);
+		bmpAnimation.gotoAndPlay("show"+ran);
+		stage.addChild(bmpAnimation);
+		createjs.Ticker.addListener(stage);
+		
+		setTimeout(function(){
+				stage.removeChild(container);
+			},1500);
 		//Tween complete
 		}
 	}

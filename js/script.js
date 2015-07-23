@@ -2,17 +2,17 @@ var main = function(){
 	
 var my_media;
 
-var playAudio = function(audioID) {
-		var audioElement = document.getElementById(audioID);
-		var url = audioElement.getAttribute('src');
-		my_media = new Media(url,
-				// success callback
-				 function () { console.log("playAudio():Audio Success"); },
-				// error callback
-				 function (err) { console.log("playAudio():Audio Error: " + err); }
-		);
-			   // Play audio
-		my_media.play();
+ var playAudio = function(audioID) {
+		 var audioElement = document.getElementById(audioID);
+		 var url = audioElement.getAttribute('src');
+		 my_media = new Media(url,
+				 // success callback
+				  function () { console.log("playAudio():Audio Success"); },
+				 // error callback
+				  function (err) { console.log("playAudio():Audio Error: " + err); }
+		 );
+			    // Play audio
+		 my_media.play();
 		}
 
 var playerNumInit = function(){
@@ -502,23 +502,28 @@ var teleport = [
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
-		var container = new createjs.Container(); 
-		var textFontSize = 60;
-		text = new createjs.Text(ran, textFontSize +"px " + "fonts/Bangers.ttf", "#ffffe7"); 
+		var canvas = document.getElementById('myCanvas'),
+		context = canvas.getContext('2d');
+		
+		//var container = new createjs.Container();
+		//context.drawImage("images/dice.png",224,0,224,224);
+		//var textFontSize = 60;
+		//text = new createjs.Text(ran, textFontSize +"px " + "fonts/Bangers.ttf", "#ffffe7"); 
 			
-		container.addChild(text); 
-		container.x = (cellSize*6) - textFontSize/4; 
-		container.y = (cellSize*6) - textFontSize; 
-		container.name = ran; 
+		//container.addChild(image); 
+		//container.x = (cellSize*6) - textFontSize/4; 
+		//container.y = (cellSize*6) - textFontSize; 
 		
-		container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
-		stage.addChild(container); 
-		stage.update();
+		//container.name = ran; 
 		
-		createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
+		//container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
+		//stage.addChild(container); 
+		//stage.update();
 		
-		function setTimeout() {
-			stage.removeChild(container);
+		//createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
+		
+		//function setTimeout() {
+		//	stage.removeChild(container);
 		//Tween complete
 		}
 	}

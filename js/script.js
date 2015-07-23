@@ -530,7 +530,7 @@ var teleport = [
 	}
 
 	$('#dicePlayer1').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -538,7 +538,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer2').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -546,7 +546,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer3').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
@@ -554,7 +554,7 @@ var teleport = [
 	});
 	
 	$('#dicePlayer4').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

@@ -201,13 +201,13 @@ var teleport = [
 				if (endLocation < teleport[i].endPoint){
 					//Ladder
 					teleportType = "Ladder";
-					//playAudio(LadderAudio);
+					playAudio("LadderAudio");
 					messageColor = "#8BC34A";
 				}
 				else{
 					//Snake
 					teleportType = "Snake";
-					//playAudio(SnakeAudio);
+					playAudio("SnakeAudio");
 					messageColor = "#EF5350";
 				}
 				
@@ -482,9 +482,9 @@ var teleport = [
 		{onboard:0,currentLocation:0,xCoordinate:homeLocationXCoordinate,yCoordinate:homeLocationYCoordinate,lineNumber:1},
 	];
 	var ran;
-	var DiceRollAudio = document.getElementById("DiceRollAudio");
-	//var LadderAudio = document.getElementById("LadderAudio");
-	//var SnakeAudio = document.getElementById("SnakeAudio");
+	// var DiceRollAudio = document.getElementById("DiceRollAudio");
+	// var LadderAudio = document.getElementById("LadderAudio");
+	// var SnakeAudio = document.getElementById("SnakeAudio");
 	var win = 0;
 	var activePlayer = 0;
 	//document.getElementById("activePlayerHTML").innerHTML = "Player" + (activePlayer + 1);

@@ -1,6 +1,22 @@
 var main = function(){
 var my_media;
+var my_media_teleport;
+var spriteSheet = new createjs.SpriteSheet({
+			 images: ["images/dice.png"],
+			 frames: [[0,0,224,224],[224,0,448,224],[448,0,672,224],[0,224,224,448],[224,224,448,448],[448,224,672,448]],
+			 animations:{
+				 show1 : 0,
+				 show2 : 1,
+				 show3 : 2,
+				 show4 : 3,
+				 show5 : 4,
+				 show6 : 5,
+			 }
+		 });
 
+var dice1 = document.createElement("img");
+dice1.setAttribute("src","images/dice.png")
+		 
 var playAudio = function(audioID) {
 	var audioElement = document.getElementById(audioID);
 	var url = audioElement.getAttribute('src');
@@ -12,6 +28,19 @@ var playAudio = function(audioID) {
 	);
 		   // Play audio
 	my_media.play();
+}
+
+var playAudioTeleport = function(audioID) {
+	var audioElement = document.getElementById(audioID);
+	var url = audioElement.getAttribute('src');
+	my_media_teleport = new Media(url,
+			// success callback
+			 function () { console.log("playAudioTeleport():Audio Success"); },
+			// error callback
+			 function (err) { console.log("playAudioTeleport():Audio Error: " + err); }
+	);
+		   // Play audio
+	my_media_teleport.play();
 }
 
 var playerNumInit = function(){
@@ -108,27 +137,27 @@ var createCircle = function(){
 }
 
 var teleport = [
-		 {startPoint:8,endPoint:26,xCoordinate:(6.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,message:"You move from 8 to 26"},
-		 {startPoint:19,endPoint:38,xCoordinate:(3.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,message:"You move from 19 to 38"},
-		 {startPoint:21,endPoint:82,xCoordinate:(2.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,message:"You move from 21 to 82"},
-		 {startPoint:28,endPoint:53,xCoordinate:(8.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,message:"You move from 28 to 53"},
-		 {startPoint:36,endPoint:57,xCoordinate:(4.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,message:"You move from 36 to 57"},
-		 {startPoint:43,endPoint:77,xCoordinate:(4.3 * cellSize),yCoordinate:(7.7*cellSize)+topBorderOfBoard,line:8,message:"You move from 43 to 77"},
-		 {startPoint:46,endPoint:15,xCoordinate:(6.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,message:"You move from 46 to 15"},
-		 {startPoint:48,endPoint:9,xCoordinate:(9.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,message:"You move from 48 to 9"},
-		 {startPoint:52,endPoint:11,xCoordinate:(10.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,message:"You move from 52 to 11"},
-		 {startPoint:54,endPoint:88,xCoordinate:(8.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,message:"You move from 54 to 88"},
-		 {startPoint:59,endPoint:18,xCoordinate:(3.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,message:"You move from 59 to 18"},
-		 {startPoint:61,endPoint:99,xCoordinate:(2.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,message:"You move from 61 to 99"},
-		 {startPoint:62,endPoint:96,xCoordinate:(5.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,message:"You move from 62 to 96"},
-		 {startPoint:64,endPoint:25,xCoordinate:(5.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,message:"You move from 64 to 25"},
-		 {startPoint:66,endPoint:87,xCoordinate:(7.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,message:"You move from 66 to 87"},
-		 {startPoint:68,endPoint:2,xCoordinate:(2.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,message:"You move from 68 to 2"},
-		 {startPoint:69,endPoint:33,xCoordinate:(8.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,message:"You move from 69 to 33"},
-		 {startPoint:83,endPoint:22,xCoordinate:(2.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,message:"You move from 83 to 22"},
-		 {startPoint:89,endPoint:51,xCoordinate:(10.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,message:"You move from 89 to 51"},
-		 {startPoint:93,endPoint:24,xCoordinate:(4.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,message:"You move from 93 to 24"},
-		 {startPoint:98,endPoint:13,xCoordinate:(8.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,message:"You move from 98 to 13"}
+		 {startPoint:8,endPoint:26,xCoordinate:(6.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
+		 {startPoint:19,endPoint:38,xCoordinate:(3.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport0.png"},
+		 {startPoint:21,endPoint:82,xCoordinate:(2.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
+		 {startPoint:28,endPoint:53,xCoordinate:(8.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
+		 {startPoint:36,endPoint:57,xCoordinate:(4.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
+		 {startPoint:43,endPoint:77,xCoordinate:(4.3 * cellSize),yCoordinate:(7.7*cellSize)+topBorderOfBoard,line:8,image:"images/teleport0.png"},
+		 {startPoint:46,endPoint:15,xCoordinate:(6.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
+		 {startPoint:48,endPoint:9,xCoordinate:(9.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport0.png"},
+		 {startPoint:52,endPoint:11,xCoordinate:(10.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
+		 {startPoint:54,endPoint:88,xCoordinate:(8.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
+		 {startPoint:59,endPoint:18,xCoordinate:(3.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
+		 {startPoint:61,endPoint:99,xCoordinate:(2.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport0.png"},
+		 {startPoint:62,endPoint:96,xCoordinate:(5.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport0.png"},
+		 {startPoint:64,endPoint:25,xCoordinate:(5.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
+		 {startPoint:66,endPoint:87,xCoordinate:(7.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
+		 {startPoint:68,endPoint:2,xCoordinate:(2.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport0.png"},
+		 {startPoint:69,endPoint:33,xCoordinate:(8.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport0.png"},
+		 {startPoint:83,endPoint:22,xCoordinate:(2.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
+		 {startPoint:89,endPoint:51,xCoordinate:(10.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
+		 {startPoint:93,endPoint:24,xCoordinate:(4.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
+		 {startPoint:98,endPoint:13,xCoordinate:(8.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"}
 	];
 
 	var incrementPlayer = function() {
@@ -201,13 +230,13 @@ var teleport = [
 				if (endLocation < teleport[i].endPoint){
 					//Ladder
 					teleportType = "Ladder";
-					playAudio("LadderAudio");
+					playAudioTeleport("LadderAudio");
 					messageColor = "#8BC34A";
 				}
 				else{
 					//Snake
 					teleportType = "Snake";
-					playAudio("SnakeAudio");
+					playAudioTeleport("SnakeAudio");
 					messageColor = "#EF5350";
 				}
 				
@@ -225,29 +254,22 @@ var teleport = [
 				player[activePlayer].xCoordinate = teleport[i].xCoordinate;
 				player[activePlayer].yCoordinate = teleport[i].yCoordinate;
 				player[activePlayer].currentLocation = teleport[i].endPoint;
-				canvasMessage = teleport[i].message;
+				canvasImage = teleport[i].image;
 				var container = new createjs.Container(); 
-				var textFontSize = 36;
-				text = new createjs.Text(canvasMessage, textFontSize +"px bangers", messageColor); 
-				container.addChild(text); 
-				container.x = cellSize*3; 
-				container.y = (cellSize*6) - textFontSize; 
-				container.name = canvasMessage; 
-				container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
+				var image = new createjs.Bitmap(canvasImage); 
+				container.addChild(image); 
+				container.x = ((cellSize*10)/4); 
+				container.y = ((cellSize*10)/2); 
+				//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
 				stage.addChild(container); 
 				stage.update();
-				createjs.Tween.get(text).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
-				function setTimeout() {
-					/*if (teleportType === "Ladder"){
-						document.getElementById("LadderAudio").pause();
-					}
-					else{
-						document.getElementById("SnakeAudio").pause();
-					} */
-					my_media.pause();
+		
+				 createjs.Tween.get(image).set({alpha:1, regX: 4, regY: 20, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
+				setTimeout(function() {
+					my_media_teleport.pause();
 					stage.removeChild(container);
 			//Tween complete
-				}
+				},3500)
 				
 				// document.getElementById(elementId+"Location").innerHTML = "Player " + (activePlayer + 1) + "Location "+ endLocation;
 				teleportStatus = 1;
@@ -508,48 +530,23 @@ var teleport = [
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
-			// var container = new createjs.Container(); 
-		// var textFontSize = 60;
-		// text = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7"); 
-			
-		// container.addChild(text); 
-		// container.x = (cellSize*6) - textFontSize/4; 
-		// container.y = (cellSize*6) - textFontSize; 
-		// container.name = ran; 
-		
-		// container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
-		// stage.addChild(container); 
-		// stage.update();
-		
-		// createjs.Tween.get(text).set({alpha:1, regX: 12, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:3, scaleY:3}, 200).to({alpha:1, scaleX:3, scaleY:3}, 400).call(setTimeout);
-		
-		spriteSheet = new createjs.SpriteSheet({
-			images: ["dice.png"],
-			frames: [[0,0,224,224],[224,0,448,224],[448,0,672,224],[0,224,224,448],[224,224,448,448],[448,224,672,448]],
-			animations:{
-				show1 : 0,
-				show2 : 1,
-				show3 : 2,
-				show4 : 3,
-				show5 : 4,
-				show6 : 5,
-			}
-		});
-		
-		bmpAnimation = new createjs.BitmapAnimation(spriteSheet);
-		bmpAnimation.gotoAndPlay("show"+ran);
-		stage.addChild(bmpAnimation);
-		createjs.Ticker.addListener(stage);
+			container = new createjs.Container(); 
+			image = new createjs.Bitmap("images/showDice"+ran+".png"); 
+			container.addChild(image); 
+			container.x = ((cellSize*10)/2); 
+			container.y = ((cellSize*10)/2); 
+			//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
+			stage.addChild(container); 
+			stage.update();
 		
 		setTimeout(function(){
 				stage.removeChild(container);
 			},1500);
 		//Tween complete
-		}
 	}
 
 	$('#dicePlayer1').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

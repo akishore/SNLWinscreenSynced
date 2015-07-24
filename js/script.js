@@ -258,7 +258,7 @@ var teleport = [
 				var container = new createjs.Container(); 
 				var image = new createjs.Bitmap(canvasImage); 
 				container.addChild(image); 
-				container.x = ((cellSize*10)/4); 
+				container.x = ((cellSize*10)/2); 
 				container.y = ((cellSize*10)/2); 
 				//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
 				stage.addChild(container); 

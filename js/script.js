@@ -546,7 +546,7 @@ var teleport = [
 	}
 
 	$('#dicePlayer1').click(function(){
-		//playAudio("DiceRollAudio");
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;

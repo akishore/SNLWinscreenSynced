@@ -231,7 +231,7 @@ var teleport = [
 				yCoordinate = teleport[i].yCoordinate
 			
 				createjs.Tween.get(window["coin" + (activePlayer + 1)], { loop: false })
-				.to({ x: (xCoordinate), y: yCoordinate}, 1500);
+				.to({ x: (xCoordinate), y: yCoordinate}, 1500).call(incrementPlayer);
 				
 				
 				player[activePlayer].lineNumber= lineNumber;
@@ -256,7 +256,7 @@ var teleport = [
 				},3500)
 				
 				teleportStatus = 1;
-				incrementPlayer();
+				
 				break;
 			}
 		}

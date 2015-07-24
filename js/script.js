@@ -1,21 +1,6 @@
 var main = function(){
 var my_media;
 var my_media_teleport;
-var spriteSheet = new createjs.SpriteSheet({
-			 images: ["images/dice.png"],
-			 frames: [[0,0,224,224],[224,0,448,224],[448,0,672,224],[0,224,224,448],[224,224,448,448],[448,224,672,448]],
-			 animations:{
-				 show1 : 0,
-				 show2 : 1,
-				 show3 : 2,
-				 show4 : 3,
-				 show5 : 4,
-				 show6 : 5,
-			 }
-		 });
-
-var dice1 = document.createElement("img");
-dice1.setAttribute("src","images/dice.png")
 		 
 var playAudio = function(audioID) {
 	var audioElement = document.getElementById(audioID);
@@ -138,26 +123,26 @@ var createCircle = function(){
 
 var teleport = [
 		 {startPoint:8,endPoint:26,xCoordinate:(6.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
-		 {startPoint:19,endPoint:38,xCoordinate:(3.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport0.png"},
-		 {startPoint:21,endPoint:82,xCoordinate:(2.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
-		 {startPoint:28,endPoint:53,xCoordinate:(8.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
-		 {startPoint:36,endPoint:57,xCoordinate:(4.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
-		 {startPoint:43,endPoint:77,xCoordinate:(4.3 * cellSize),yCoordinate:(7.7*cellSize)+topBorderOfBoard,line:8,image:"images/teleport0.png"},
-		 {startPoint:46,endPoint:15,xCoordinate:(6.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
-		 {startPoint:48,endPoint:9,xCoordinate:(9.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport0.png"},
-		 {startPoint:52,endPoint:11,xCoordinate:(10.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
-		 {startPoint:54,endPoint:88,xCoordinate:(8.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
-		 {startPoint:59,endPoint:18,xCoordinate:(3.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"},
-		 {startPoint:61,endPoint:99,xCoordinate:(2.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport0.png"},
-		 {startPoint:62,endPoint:96,xCoordinate:(5.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport0.png"},
-		 {startPoint:64,endPoint:25,xCoordinate:(5.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
-		 {startPoint:66,endPoint:87,xCoordinate:(7.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport0.png"},
-		 {startPoint:68,endPoint:2,xCoordinate:(2.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport0.png"},
-		 {startPoint:69,endPoint:33,xCoordinate:(8.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport0.png"},
-		 {startPoint:83,endPoint:22,xCoordinate:(2.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
-		 {startPoint:89,endPoint:51,xCoordinate:(10.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport0.png"},
-		 {startPoint:93,endPoint:24,xCoordinate:(4.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport0.png"},
-		 {startPoint:98,endPoint:13,xCoordinate:(8.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport0.png"}
+		 {startPoint:19,endPoint:38,xCoordinate:(3.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport1.png"},
+		 {startPoint:21,endPoint:82,xCoordinate:(2.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport2.png"},
+		 {startPoint:28,endPoint:53,xCoordinate:(8.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport3.png"},
+		 {startPoint:36,endPoint:57,xCoordinate:(4.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport4.png"},
+		 {startPoint:43,endPoint:77,xCoordinate:(4.3 * cellSize),yCoordinate:(7.7*cellSize)+topBorderOfBoard,line:8,image:"images/teleport5.png"},
+		 {startPoint:46,endPoint:15,xCoordinate:(6.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport6.png"},
+		 {startPoint:48,endPoint:9,xCoordinate:(9.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport7.png"},
+		 {startPoint:52,endPoint:11,xCoordinate:(10.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport8.png"},
+		 {startPoint:54,endPoint:88,xCoordinate:(8.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport9.png"},
+		 {startPoint:59,endPoint:18,xCoordinate:(3.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport10.png"},
+		 {startPoint:61,endPoint:99,xCoordinate:(2.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport11.png"},
+		 {startPoint:62,endPoint:96,xCoordinate:(5.3 * cellSize),yCoordinate:(9.7*cellSize)+topBorderOfBoard,line:10,image:"images/teleport12.png"},
+		 {startPoint:64,endPoint:25,xCoordinate:(5.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport13.png"},
+		 {startPoint:66,endPoint:87,xCoordinate:(7.3 * cellSize),yCoordinate:(8.7*cellSize)+topBorderOfBoard,line:9,image:"images/teleport14.png"},
+		 {startPoint:68,endPoint:2,xCoordinate:(2.3 * cellSize),yCoordinate:(0.7*cellSize)+topBorderOfBoard,line:1,image:"images/teleport15.png"},
+		 {startPoint:69,endPoint:33,xCoordinate:(8.3 * cellSize),yCoordinate:(3.7*cellSize)+topBorderOfBoard,line:4,image:"images/teleport16.png"},
+		 {startPoint:83,endPoint:22,xCoordinate:(2.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport17.png"},
+		 {startPoint:89,endPoint:51,xCoordinate:(10.3 * cellSize),yCoordinate:(5.7*cellSize)+topBorderOfBoard,line:6,image:"images/teleport18.png"},
+		 {startPoint:93,endPoint:24,xCoordinate:(4.3 * cellSize),yCoordinate:(2.7*cellSize)+topBorderOfBoard,line:3,image:"images/teleport19.png"},
+		 {startPoint:98,endPoint:13,xCoordinate:(8.3 * cellSize),yCoordinate:(1.7*cellSize)+topBorderOfBoard,line:2,image:"images/teleport20.png"}
 	];
 
 	var incrementPlayer = function() {
@@ -174,7 +159,7 @@ var teleport = [
 					document.getElementById("dicePlayer"+i).disabled = true;
 				}
 			}
-			// document.getElementById("turnInfo").innerHTML = "Player" + (activePlayer+1) +" turn";
+
 			stage.removeChild(containerTurn);
 			
 			containerTurn = new createjs.Container(); 
@@ -183,10 +168,9 @@ var teleport = [
 			containerTurn.addChild(textTurn); 
 			containerTurn.x = (cellSize*10)/2; 
 			containerTurn.y = cellSize/2; 
-			//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
+			
 			stage.addChild(containerTurn); 
 			stage.update();
-			
 			
 			steps = 0;
 			xCoordinate = player[activePlayer].xCoordinate;
@@ -203,7 +187,7 @@ var teleport = [
 				setTimeout(function(){
 					ranValueOnCanvas(ran);
 				},1500);
-				// document.getElementById("player2").innerHTML = "Computer throws " +ran;
+				
 				xCoordinate = player[activePlayer].xCoordinate;
 				yCoordinate = player[activePlayer].yCoordinate;
 				lineNumber = player[activePlayer].lineNumber;
@@ -258,9 +242,9 @@ var teleport = [
 				var container = new createjs.Container(); 
 				var image = new createjs.Bitmap(canvasImage); 
 				container.addChild(image); 
-				container.x = ((cellSize*10)/2); 
+				container.x = ((cellSize*10)/2) + 100; 
 				container.y = ((cellSize*10)/2); 
-				//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
+				
 				stage.addChild(container); 
 				stage.update();
 		
@@ -268,10 +252,9 @@ var teleport = [
 				setTimeout(function() {
 					my_media_teleport.pause();
 					stage.removeChild(container);
-			//Tween complete
+				//Tween complete
 				},3500)
 				
-				// document.getElementById(elementId+"Location").innerHTML = "Player " + (activePlayer + 1) + "Location "+ endLocation;
 				teleportStatus = 1;
 				incrementPlayer();
 				break;
@@ -286,42 +269,24 @@ var teleport = [
 		if (endLocation < 100){
 			winStatus = 0;
 			player[activePlayer].currentLocation = endLocation;
-			/*
-			if (playerNum === "1" && activePlayer === 1){
-				document.getElementById(elementId+"Location").innerHTML = "Computer Location "+ endLocation;
-			}
-			else{
-				document.getElementById(elementId+"Location").innerHTML = "Player " + (activePlayer + 1) + "Location "+ endLocation;
-			}
-			*/
 		}
 		else if (endLocation === 100){
 			winStatus = 1;
-			//payal
 			window.document.location.href = "endGame.html?num=" + playerNum + "&winId=" + (activePlayer+1);
-			//endpayal
 			player[activePlayer].currentLocation = player[activePlayer].currentLocation + steps;
-			/*
-			if (playerNum === "1" && activePlayer === 1){
-				document.getElementById(elementId+"Location").innerHTML = "Computer Location "+ endLocation;
-			}
-			else{
-				document.getElementById(elementId+"Location").innerHTML = "Player " + (activePlayer + 1) + "Location "+ endLocation;
-			}
-			*/
+
 			createjs.Tween.get(window["coin" + (activePlayer + 1)], { loop: false })
 		    .to({ x: xCoordinate},100)
-			// document.getElementById("parentContainer").style.visibility.hidden = true;
-			// document.getElementById("parentContainer_gameOver").style.visibility.hidden = false;
+			
 			var winMessage = "Player" + [activePlayer + 1] + " wins"
 			var container = new createjs.Container(); 
 			var textFontSize = 40;
-			//check why
+			
 			text = new createjs.Text(winMessage, textFontSize +"px" + "fonts/Bangers.ttf", "#ffa250"); 
 			container.addChild(text); 
 			container.x = cellSize*4; 
 			container.y = (cellSize*6) - textFontSize; 
-			//container.name = canvasMessage; 
+			
 			container.shadow = new createjs.Shadow("#000000", 5, 5, 10);
 			stage.addChild(container); 
 			stage.update();
@@ -330,14 +295,6 @@ var teleport = [
 		else{
 			winStatus = -1;
 			player[activePlayer].currentLocation = player[activePlayer].currentLocation;
-			/*
-			if (playerNum === "1" && activePlayer === 1){
-				document.getElementById(elementId+"Location").innerHTML = "Computer Location "+ (player[activePlayer].currentLocation);
-			}
-			else{
-				document.getElementById(elementId+"Location").innerHTML = "Player " + (activePlayer + 1) + "Location "+ (player[activePlayer].currentLocation);
-			}
-			*/
 			endLocation = player[activePlayer].currentLocation;
 		}
 	}
@@ -431,12 +388,10 @@ var teleport = [
 			steps = steps + ran;
 		}
 		if (playerNum === "1" && activePlayer === 1){
-			// document.getElementById(elementId+"Location").innerHTML = "Computer Location "+ endLocation;
 			ran = Math.floor(Math.random() * 6) + 1;
 			setTimeout(function(){
 				ranValueOnCanvas(ran);
 			},1500);
-			// document.getElementById("player2").innerHTML = "Computer throws " +ran;
 			game();
 		}
 	}
@@ -465,7 +420,6 @@ var teleport = [
 			}		
 		} 
 	}
-	//document.getElementById("dice").disabled= false;
 }
 	
 	var game = function(){	
@@ -474,12 +428,10 @@ var teleport = [
 			elementId = "player"+(activePlayer+1);
 			endLocation = player[activePlayer].currentLocation + steps;
 			if (playerNum === "1" && activePlayer === 1){
-				// document.getElementById(elementId + "Location").innerHTML = "Computer Location "+ endLocation;
 				ran = Math.floor(Math.random() * 6) + 1;
 				setTimeout(function(){
 					ranValueOnCanvas(ran);
 				},1500);
-				// document.getElementById("player2").innerHTML = "Computer throws " +ran;
 				game();
 			}
 			
@@ -504,12 +456,9 @@ var teleport = [
 		{onboard:0,currentLocation:0,xCoordinate:homeLocationXCoordinate,yCoordinate:homeLocationYCoordinate,lineNumber:1},
 	];
 	var ran;
-	// var DiceRollAudio = document.getElementById("DiceRollAudio");
-	// var LadderAudio = document.getElementById("LadderAudio");
-	// var SnakeAudio = document.getElementById("SnakeAudio");
 	var win = 0;
 	var activePlayer = 0;
-	//document.getElementById("activePlayerHTML").innerHTML = "Player" + (activePlayer + 1);
+	
 	if (playerNum > 1){
 		for (var i=1;i<=playerNum;i++){
 			if ((activePlayer+1) === i){
@@ -526,7 +475,6 @@ var teleport = [
 		}
 	}
 	
-	// document.getElementById("turnInfo").innerHTML = "Player" + (activePlayer+1) +" turn";
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
@@ -535,13 +483,13 @@ var teleport = [
 			container.addChild(image); 
 			container.x = ((cellSize*10)/2); 
 			container.y = ((cellSize*10)/2); 
-			//containerTurn.shadow = new createjs.Shadow("#ccc", 5, 5, 10);
+
 			stage.addChild(container); 
 			stage.update();
 		
-		setTimeout(function(){
+		function setTimeout(){
 				stage.removeChild(container);
-			},1500);
+		};
 		//Tween complete
 	}
 
@@ -549,7 +497,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player1").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 	
@@ -557,7 +504,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 	
@@ -565,7 +511,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 	
@@ -573,7 +518,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 };

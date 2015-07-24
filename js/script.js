@@ -560,7 +560,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player2").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 	
@@ -568,7 +567,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player3").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 	
@@ -576,7 +574,6 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		// document.getElementById("player4").innerHTML = "Player" + (activePlayer + 1) + "throws " +ran;
 		game();
 	});
 };

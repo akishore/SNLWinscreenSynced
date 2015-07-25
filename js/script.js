@@ -1,32 +1,32 @@
 var main = function(){
 var my_media;
-var my_media_teleport;
+//var my_media_teleport;
 		 
 var playAudio = function(audioID) {
 	var audioElement = document.getElementById(audioID);
 	var url = audioElement.getAttribute('src');
 	my_media = new Media(url,
 			// success callback
-			 function () { console.log("playAudio():Audio Success"); },
+			 function () { my_media.release(); },
 			// error callback
-			 function (err) { console.log("playAudio():Audio Error: " + err); }
+			 function (err) { my_media.release(); }
 	);
 		   // Play audio
 	my_media.play();
 }
 
-var playAudioTeleport = function(audioID) {
-	var audioElement = document.getElementById(audioID);
-	var url = audioElement.getAttribute('src');
-	my_media_teleport = new Media(url,
-			// success callback
-			 function () { console.log("playAudioTeleport():Audio Success"); },
-			// error callback
-			 function (err) { console.log("playAudioTeleport():Audio Error: " + err); }
-	);
-		   // Play audio
-	my_media_teleport.play();
-}
+// var playAudioTeleport = function(audioID) {
+	// var audioElement = document.getElementById(audioID);
+	// var url = audioElement.getAttribute('src');
+	// my_media_teleport = new Media(url,
+			// // success callback
+			 // function () { console.log("playAudioTeleport():Audio Success"); },
+			// // error callback
+			 // function (err) { console.log("playAudioTeleport():Audio Error: " + err); }
+	// );
+		   // // Play audio
+	// my_media_teleport.play();
+// }
 
 var playerNumInit = function(){
 	var queryString = new Array();
@@ -214,13 +214,13 @@ var teleport = [
 				if (endLocation < teleport[i].endPoint){
 					//Ladder
 					teleportType = "Ladder";
-					playAudioTeleport("LadderAudio");
+					playAudio("LadderAudio");
 					messageColor = "#8BC34A";
 				}
 				else{
 					//Snake
 					teleportType = "Snake";
-					playAudioTeleport("SnakeAudio");
+					playAudio("SnakeAudio");
 					messageColor = "#EF5350";
 				}
 				
@@ -250,7 +250,7 @@ var teleport = [
 		
 				 createjs.Tween.get(image).set({alpha:1, regX: 240, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
 				setTimeout(function() {
-					my_media_teleport.pause();
+					my_media.pause();
 					stage.removeChild(container);
 				//Tween complete
 				},3500)
@@ -478,23 +478,25 @@ var teleport = [
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
-			container = new createjs.Container(); 
-			image = new createjs.Bitmap("images/showDice"+ran+".png"); 
-			container.addChild(image); 
-			container.x = ((cellSize*10)/2); 
-			container.y = ((cellSize*10)/2); 
+		container = new createjs.Container(); 
+		image = new createjs.Bitmap("images/showDice"+ran+".png"); 
+		container.addChild(image); 
+		container.x = ((cellSize*10)/2); 
+		container.y = ((cellSize*10)/2); 
 
-			stage.addChild(container); 
-			stage.update();
+		stage.addChild(container);
+		stage.update();
 		
-		function setTimeout(){
-				stage.removeChild(container);
-		};
+		//createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 400).call(setTimeout);
+		
+	setTimeout(function(){
+		stage.removeChild(container);
+	});
 		//Tween complete
 	}
 
 	$('#dicePlayer1').click(function(){
-		playAudio("DiceRollAudio");
+		//playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		game();

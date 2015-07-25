@@ -62,12 +62,6 @@ img, embed, object, video {
 	margin-right:auto;
 	width: 1120px;
 }
-/* 
-#parentContainer_gameOver{
-	margin-left:auto;
-	margin-right:auto;
-	width: 920px;
-} */
 .playerName {
 	font-family: 'Audiowide', cursive;
 	font-size: 16px;
@@ -299,18 +293,6 @@ input#dicePlayer4:disabled    {
   animation-duration: 1.2s;
 }
 
-/*.loseAnimation{
-	-webkit-animation-name: spin;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-direction: alternate;
-
-  animation-name: spin;
-  animation-iteration-count: infinite;
-  animation-duration: 1.2s;
-  animation-direction: alternate;
-}*/
-
 @-webkit-keyframes bounce {
   from, to  {
     bottom: 0;
@@ -322,11 +304,6 @@ input#dicePlayer4:disabled    {
   }
 }
 
-/*@-webkit-keyframes spin {
-  from { 									}
-  to   { -webkit-transform: rotateZ(30deg); }
-}*/
-
 @keyframes bounce {
   from, to  {
     bottom: 0;
@@ -337,47 +314,3 @@ input#dicePlayer4:disabled    {
     animation-timing-function: ease-in;
   }
 }
-
-/*
-#boardbg {
-	float:left;
-	height:100vh;
-}
-#boardbg img{
-	height:100vh;
-} */
-/*
-.rightElement {
-	margin: 10px 0px 10px 0px;
-}
-
-.bar {
-	width: 100%;
-	padding: 16px 0 16px 0;
-	text-align: center;	
-	background:url(images/bg7.png);
-	background-color: #26354c;
-	color: #ffffff;
-	font-family: 'Raleway', sans-serif;	
-}
-
-#topBar {	
-	font-size: 20px;
-}
-#bottomBar {
-	font-size: 16px;
-	position: relative;
-	margin-top: -150px;  
-	height: 150px;
-	clear:both;
-}
-*/
-/*
-input#rollButton    {
-	background:url(images/roll_button_normal.jpg);
-	background-repeat: no-repeat;
-	width:200px;
-	height:100px;
-	border: 0;
-}
-*/

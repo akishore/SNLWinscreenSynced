@@ -15,18 +15,6 @@ var playAudio = function(audioID) {
 	my_media.play();
 }
 
-// var playAudioTeleport = function(audioID) {
-	// var audioElement = document.getElementById(audioID);
-	// var url = audioElement.getAttribute('src');
-	// my_media_teleport = new Media(url,
-			// // success callback
-			 // function () { console.log("playAudioTeleport():Audio Success"); },
-			// // error callback
-			 // function (err) { console.log("playAudioTeleport():Audio Error: " + err); }
-	// );
-		   // // Play audio
-	// my_media_teleport.play();
-// }
 
 var playerNumInit = function(){
 	var queryString = new Array();

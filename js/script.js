@@ -171,6 +171,7 @@ var teleport = [
 			if (activePlayer === 0){
 				activePlayer = 1;
 				document.getElementById("dicePlayer1").disabled=true;
+				playAudio("DiceRollAudio");
 				ran = Math.floor(Math.random() * 6) + 1;
 				setTimeout(function(){
 					ranValueOnCanvas(ran);

@@ -248,12 +248,12 @@ var teleport = [
 				stage.addChild(container); 
 				stage.update();
 		
-				 createjs.Tween.get(image).set({alpha:1, regX: 240, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 2000).call(setTimeout);
+				 createjs.Tween.get(image).set({alpha:1, regX: 240, regY: 30, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).to({alpha:1, scaleX:1.3, scaleY:1.3}, 1000).call(setTimeout);
 				setTimeout(function() {
 					my_media.pause();
 					stage.removeChild(container);
 				//Tween complete
-				},3500)
+				},800)
 				
 				teleportStatus = 1;
 				
@@ -496,7 +496,7 @@ var teleport = [
         stage.addChild(container); 
         stage.update();
         
-        createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 200).call(setTimeout);
+        createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 800).call(setTimeout);
         
         function setTimeout() {
             stage.removeChild(container);

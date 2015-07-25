@@ -496,7 +496,7 @@ var teleport = [
         stage.addChild(container); 
         stage.update();
         
-        createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 200), 400).call(setTimeout);
+        createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 200).call(setTimeout);
         
         function setTimeout() {
             stage.removeChild(container);

@@ -76,7 +76,6 @@
 
 		function scriptFunction() {
 			AniJS.run();
-			//document.getElementById('PageLoadAudio').play();
 			playAudio('PageLoadAudio');
 		}
 		var playAudio = function(audioID) {
@@ -84,9 +83,13 @@
 		var url = audioElement.getAttribute('src');
 		my_media = new Media(url,
 				// success callback
-				 function () { console.log("playAudio():Audio Success"); },
+				 function () { 
+				 //console.log("playAudio():Audio Success"); 
+				 },
 				// error callback
-				 function (err) { console.log("playAudio():Audio Error: " + err); }
+				 function (err) { 
+				 //console.log("playAudio():Audio Error: " + err); 
+				 }
 		);
 			   // Play audio
 		my_media.play();

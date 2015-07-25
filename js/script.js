@@ -478,25 +478,34 @@ var teleport = [
 	createCircle()
 	
 	var ranValueOnCanvas = function(ran){
-		container = new createjs.Container(); 
+		var container = new createjs.Container(); 
+        //var textFontSize = 60;
 		image = new createjs.Bitmap("images/showDice"+ran+".png"); 
 		container.addChild(image); 
 		container.x = ((cellSize*10)/2); 
 		container.y = ((cellSize*10)/2); 
-
-		stage.addChild(container);
-		stage.update();
 		
-		//createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 400).call(setTimeout);
-		
-	setTimeout(function(){
-		stage.removeChild(container);
-	});
-		//Tween complete
+        // image = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7 "); 
+            
+        // container.addChild(text); 
+        // container.x = (cellSize*6) - textFontSize/4; 
+        // container.y = (cellSize*6) - textFontSize; 
+        container.name = ran; 
+        
+        //container.shadow = new createjs.Shadow("#000000 ", 5, 5, 10);
+        stage.addChild(container); 
+        stage.update();
+        
+        createjs.Tween.get(image).set({alpha:1, scaleX:1, scaleY:1}).to({alpha:1, scaleX:1, scaleY:1}, 200), 400).call(setTimeout);
+        
+        function setTimeout() {
+            stage.removeChild(container);
+        //Tween complete
+        }
 	}
 
 	$('#dicePlayer1').click(function(){
-		//playAudio("DiceRollAudio");
+		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		game();

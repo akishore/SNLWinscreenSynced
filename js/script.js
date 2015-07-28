@@ -1,6 +1,5 @@
 var main = function(){
 var my_media;
-//var my_media_teleport;
 		 
 var playAudio = function(audioID) {
 	var audioElement = document.getElementById(audioID);
@@ -549,7 +548,6 @@ var teleport = [
 		
         container.name = ran; 
         
-        //container.shadow = new createjs.Shadow("#000000 ", 5, 5, 10);
         stage.addChild(container); 
         stage.update();
         
@@ -563,9 +561,9 @@ var teleport = [
 
 	$('#dicePlayer1').click(function(){
 		playAudio("DiceRollAudio");
-		document.getElementById("helpFirstPlayer").style.visibility = "hidden";
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
+		document.getElementById("helpFirstPlayer").style.display = 'none';
 		game();
 	});
 	

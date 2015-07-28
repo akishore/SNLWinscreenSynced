@@ -514,11 +514,17 @@ var teleport = [
 	stage.addChild(containerTurn); 
 	stage.update();
 	
-	var helpFirstElement = document.createElement("div");
-	helpFirstElement.setAttribute("id","helpFirstPlayer");
-	var player1Image = document.getElementById("controlPlayer1");
-	player1Image.appendChild(helpFirstElement);
-	document.getElementById("helpFirstPlayer").innerHTML = "Player 1 Click here to start";
+	//var helpFirstElementText = document.createElement("div");
+	//helpFirstElementText.setAttribute("id","helpFirstPlayerText");
+	
+	var helpFirstElementImg = document.createElement("img");
+	helpFirstElementImg.setAttribute("src","images/bouncingArrow.gif");
+	var helpFirstElement = document.getElementById("helpFirstElement");
+	helpFirstElement.appendChild(helpFirstElementImg);
+	
+	//helpFirstElement.appendChild(helpFirstElementText);
+	//document.getElementById("helpFirstPlayerText").innerHTML = "Click here to begin!";
+	
 	
 	if (playerNum > 1){
 		for (var i=1;i<=playerNum;i++){
@@ -563,7 +569,7 @@ var teleport = [
 		playAudio("DiceRollAudio");
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
-		document.getElementById("helpFirstPlayer").style.display = 'none';
+		document.getElementById("helpFirstElement").style.display = 'none';
 		game();
 	});
 	

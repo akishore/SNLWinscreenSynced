@@ -242,6 +242,12 @@ input#dicePlayer4:disabled    {
 	padding-right:30px;
 }
 
+#controlPlayer1 {
+	font-family: "raleway", verdana, sans-serif;
+	font-weight:800;
+	color: #8e8e8e;
+	
+}
 
 #WinnerInfo {
 	display: inline-block;

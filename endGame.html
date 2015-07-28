@@ -50,7 +50,12 @@
 				}
 			}
 		}
-		document.getElementById("WinnerInfo").innerHTML = "Player"+queryString["winId"]+" wins!";
+		if (queryString["num"] === "1" && queryString["winId"] === "2"){
+			document.getElementById("WinnerInfo").innerHTML = "Computer wins!";
+		}
+		else{
+			document.getElementById("WinnerInfo").innerHTML = "Player"+queryString["winId"]+" wins!";
+		}
 		
 		var img = document.createElement("img");
 		img.setAttribute("src","images/dice_"+queryString["winId"]+".gif")

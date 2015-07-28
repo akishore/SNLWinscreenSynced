@@ -246,7 +246,9 @@ input#dicePlayer4:disabled    {
 	font-family: "raleway", verdana, sans-serif;
 	font-weight:800;
 	color: #8e8e8e;
-	
+}
+#helpFirstPlayerText {
+	padding-left: 2px;
 }
 
 #WinnerInfo {

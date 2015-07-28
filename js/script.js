@@ -66,7 +66,6 @@ var playerNum = playerNumInit();
 if (playerNum === "1"){
 		document.getElementById("controlPlayer3").style.visibility = "hidden";
 		document.getElementById("controlPlayer4").style.visibility = "hidden";
-		// document.getElementById("player2Name").innerHTML = "Computer";
 		document.getElementById("dicePlayer2").disabled = true;
 		$('#leftCol').toggleClass('player2');
 		$('#rightCol').toggleClass('player2');
@@ -170,11 +169,11 @@ var teleport = [
 			stage.removeChild(containerTurn);
 			
 			containerTurn = new createjs.Container(); 
-			var textFontSize = topBorderOfBoard/3;
-			textTurn = new createjs.Text("Player" + (activePlayer+1) +" turn", textFontSize +"px raleway", "#fff"); 
+			var textFontSize = topBorderOfBoard/4;
+			textTurn = new createjs.Text("PLAYER" + (activePlayer+1) +" TURN", textFontSize + "px raleway", "#fff"); 
 			containerTurn.addChild(textTurn); 
 			containerTurn.x = (cellSize*10)/2; 
-			containerTurn.y = cellSize/2; 
+			containerTurn.y = 3*cellSize/5; 
 			
 			stage.addChild(containerTurn); 
 			stage.update();
@@ -196,17 +195,17 @@ var teleport = [
 					stage.removeChild(containerTurn);
 					
 					containerTurn = new createjs.Container(); 
-					var textFontSize = topBorderOfBoard/3;
-					textTurn = new createjs.Text("Computer's turn", textFontSize +"px raleway", "#fff"); 
+					var textFontSize = topBorderOfBoard/4;
+					textTurn = new createjs.Text("COMPUTER'S TURN", textFontSize + "px raleway", "#fff"); 
 					containerTurn.addChild(textTurn); 
 					containerTurn.x = (cellSize*10)/2; 
-					containerTurn.y = cellSize/2; 
+					containerTurn.y = 3*cellSize/5; 
 					
 					stage.addChild(containerTurn); 
 					stage.update();
+					playAudio("DiceRollAudio");
 				},1200);
 				
-				playAudio("DiceRollAudio");
 				ran = Math.floor(Math.random() * 6) + 1;
 				xCoordinate = player[activePlayer].xCoordinate;
 				yCoordinate = player[activePlayer].yCoordinate;
@@ -228,11 +227,11 @@ var teleport = [
 					stage.removeChild(containerTurn);
 					document.getElementById("dicePlayer1").disabled=false;
 					containerTurn = new createjs.Container(); 
-					var textFontSize = topBorderOfBoard/3;
-					textTurn = new createjs.Text("Player1's turn", textFontSize +"px raleway", "#fff"); 
+					var textFontSize = topBorderOfBoard/4;
+					textTurn = new createjs.Text("PLAYER 1'S TURN", textFontSize + "px raleway", "#fff"); 
 					containerTurn.addChild(textTurn); 
 					containerTurn.x = (cellSize*10)/2; 
-					containerTurn.y = cellSize/2; 
+					containerTurn.y = 3*cellSize/5; 
 					
 					stage.addChild(containerTurn); 
 					stage.update();
@@ -505,25 +504,25 @@ var teleport = [
 	var activePlayer = 0;
 	
 	containerTurn = new createjs.Container(); 
-	var textFontSize = topBorderOfBoard/3;
-	textTurn = new createjs.Text("Player1's turn", textFontSize +"px raleway", "#fff"); 
+	var textFontSize = topBorderOfBoard/4;
+	textTurn = new createjs.Text("PLAYER 1'S TURN", textFontSize + "px raleway", "#fff"); 
 	containerTurn.addChild(textTurn); 
 	containerTurn.x = (cellSize*10)/2; 
-	containerTurn.y = cellSize/2; 
+	containerTurn.y = 3*cellSize/5; 
 	
 	stage.addChild(containerTurn); 
 	stage.update();
 	
-	//var helpFirstElementText = document.createElement("div");
-	//helpFirstElementText.setAttribute("id","helpFirstPlayerText");
+	var helpFirstElementText = document.createElement("div");
+	helpFirstElementText.setAttribute("id","helpFirstPlayerText");
 	
 	var helpFirstElementImg = document.createElement("img");
 	helpFirstElementImg.setAttribute("src","images/bouncingArrow.gif");
 	var helpFirstElement = document.getElementById("helpFirstElement");
 	helpFirstElement.appendChild(helpFirstElementImg);
 	
-	//helpFirstElement.appendChild(helpFirstElementText);
-	//document.getElementById("helpFirstPlayerText").innerHTML = "Click here to begin!";
+	helpFirstElement.appendChild(helpFirstElementText);
+	document.getElementById("helpFirstPlayerText").innerHTML = "CLICK HERE TO BEGIN!";
 	
 	
 	if (playerNum > 1){

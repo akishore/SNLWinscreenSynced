@@ -86,26 +86,46 @@ if (playerNum === "1"){
 
 var createCircle = function(){
 	
-	for (var i=playerNum;i>=1;i--){
-	window["coin" + i] = new createjs.Shape();
-		window["coin" + i].x = homeLocationXCoordinate;
-		window["coin" + i].y = homeLocationYCoordinate;
-		if (i == 1){
-			window["coin" + i].graphics.beginFill("#4670bf").drawCircle(0, 0, cellSize/5);
+	if (playerNum > 1)
+	{
+		for (var i=playerNum;i>=1;i--){
+			window["coin" + i] = new createjs.Shape();
+			window["coin" + i].x = homeLocationXCoordinate;
+			window["coin" + i].y = homeLocationYCoordinate;
+			if (i == 1){
+				window["coin" + i].graphics.beginFill("#4670bf").drawCircle(0, 0, cellSize/5);
+			}
+			else if (i == 2){
+				window["coin" + i].graphics.beginFill("#c04848").drawCircle(0, 0, cellSize/5);
+			}
+			else if (i == 3){
+				window["coin" + i].graphics.beginFill("#79c77d").drawCircle(0, 0, cellSize/5);
+			}
+			else{
+				window["coin" + i].graphics.beginFill("#f1f294").drawCircle(0, 0, cellSize/5);
+			}
+			
+			stage.addChild(window["coin" + i]);
 		}
-		else if (i == 2){
-			window["coin" + i].graphics.beginFill("#c04848").drawCircle(0, 0, cellSize/5);
-		}
-		else if (i == 3){
-			window["coin" + i].graphics.beginFill("#79c77d").drawCircle(0, 0, cellSize/5);
-		}
-		else{
-			window["coin" + i].graphics.beginFill("#f1f294").drawCircle(0, 0, cellSize/5);
-		}
-		
-		stage.addChild(window["coin" + i]);
 	}
-		
+	
+	else 
+	{
+		for (var j=2;j>=1;j--){
+			window["coin" + j] = new createjs.Shape();
+			window["coin" + j].x = homeLocationXCoordinate;
+			window["coin" + j].y = homeLocationYCoordinate;
+			if (j == 1){
+				window["coin" + j].graphics.beginFill("#4670bf").drawCircle(0, 0, cellSize/5);
+			}
+			else{
+				window["coin" + j].graphics.beginFill("#c04848").drawCircle(0, 0, cellSize/5);
+			}
+			
+			stage.addChild(window["coin" + j]);
+		}
+	}
+	
 	stage.update();
 }
 
@@ -170,24 +190,55 @@ var teleport = [
 			steps = 0;
 			if (activePlayer === 0){
 				activePlayer = 1;
+				
 				document.getElementById("dicePlayer1").disabled=true;
+			
+				setTimeout(function(){
+					stage.removeChild(containerTurn);
+					
+					containerTurn = new createjs.Container(); 
+					var textFontSize = topBorderOfBoard/3;
+					textTurn = new createjs.Text("Computer's turn", textFontSize +"px raleway", "#fff"); 
+					containerTurn.addChild(textTurn); 
+					containerTurn.x = (cellSize*10)/2; 
+					containerTurn.y = cellSize/2; 
+					
+					stage.addChild(containerTurn); 
+					stage.update();
+				},1200);
+				
 				playAudio("DiceRollAudio");
 				ran = Math.floor(Math.random() * 6) + 1;
-				setTimeout(function(){
-					ranValueOnCanvas(ran);
-				},1500);
-				
 				xCoordinate = player[activePlayer].xCoordinate;
 				yCoordinate = player[activePlayer].yCoordinate;
 				lineNumber = player[activePlayer].lineNumber;
-				game();
+				
+				setTimeout(function(){
+					ranValueOnCanvas(ran);
+					game();
+				},2000);
+				
 			}
 			else{
 				activePlayer = 0;
 				xCoordinate = player[activePlayer].xCoordinate;
 				yCoordinate = player[activePlayer].yCoordinate;
 				lineNumber = player[activePlayer].lineNumber;
-				document.getElementById("dicePlayer1").disabled=false;
+				
+				setTimeout(function(){
+					stage.removeChild(containerTurn);
+					document.getElementById("dicePlayer1").disabled=false;
+					containerTurn = new createjs.Container(); 
+					var textFontSize = topBorderOfBoard/3;
+					textTurn = new createjs.Text("Player1's turn", textFontSize +"px raleway", "#fff"); 
+					containerTurn.addChild(textTurn); 
+					containerTurn.x = (cellSize*10)/2; 
+					containerTurn.y = cellSize/2; 
+					
+					stage.addChild(containerTurn); 
+					stage.update();
+				},1200);
+				
 			}
 		}
 		
@@ -420,13 +471,19 @@ var teleport = [
 				ran = Math.floor(Math.random() * 6) + 1;
 				setTimeout(function(){
 					ranValueOnCanvas(ran);
-				},1500);
+				},1000);
 				game();
 			}
-			
 		}
 		else if (player[activePlayer].onboard === 1){
-			continueOnboard();
+			if (playerNum === "1" && activePlayer === 1){
+				setTimeout(function(){
+					continueOnboard();
+				},1500);
+			}
+			else{
+				continueOnboard();
+			}
 		}
 		else{
 			incrementPlayer();
@@ -447,6 +504,22 @@ var teleport = [
 	var ran;
 	var win = 0;
 	var activePlayer = 0;
+	
+	containerTurn = new createjs.Container(); 
+	var textFontSize = topBorderOfBoard/3;
+	textTurn = new createjs.Text("Player1's turn", textFontSize +"px raleway", "#fff"); 
+	containerTurn.addChild(textTurn); 
+	containerTurn.x = (cellSize*10)/2; 
+	containerTurn.y = cellSize/2; 
+	
+	stage.addChild(containerTurn); 
+	stage.update();
+	
+	var helpFirstElement = document.createElement("div");
+	helpFirstElement.setAttribute("id","helpFirstPlayer");
+	var player1Image = document.getElementById("controlPlayer1");
+	player1Image.appendChild(helpFirstElement);
+	document.getElementById("helpFirstPlayer").innerHTML = "Player 1 Click here to start";
 	
 	if (playerNum > 1){
 		for (var i=1;i<=playerNum;i++){
@@ -474,11 +547,6 @@ var teleport = [
 		container.x = ((cellSize*10)/2); 
 		container.y = ((cellSize*10)/2); 
 		
-        // image = new createjs.Text(ran, textFontSize +"px bangers", "#ffffe7 "); 
-            
-        // container.addChild(text); 
-        // container.x = (cellSize*6) - textFontSize/4; 
-        // container.y = (cellSize*6) - textFontSize; 
         container.name = ran; 
         
         //container.shadow = new createjs.Shadow("#000000 ", 5, 5, 10);
@@ -495,6 +563,7 @@ var teleport = [
 
 	$('#dicePlayer1').click(function(){
 		playAudio("DiceRollAudio");
+		document.getElementById("helpFirstPlayer").style.visibility = "hidden";
 		ran = Math.floor(Math.random() * 6) + 1;
 		ranValueOnCanvas(ran);
 		game();

@@ -96,8 +96,9 @@
 				playAudio('ClickAudio');
 //				document.getElementById('VictoryAudio').pause();
 //				document.getElementById('ClickAudio').play();
-				if(AdMob) AdMob.showInterstitial();
+				
 				setTimeout(function(){
+						AdMob.showInterstitial();
 						var url = "game.html?playerNum=" + queryString["num"];
 						window.location.href = url;
 						},
@@ -110,8 +111,8 @@
 //				document.getElementById('ClickAudio').play();
 				my_media.pause();
 				playAudio('ClickAudio');
-				if(AdMob) AdMob.showInterstitial();
 				setTimeout(function(){
+						AdMob.showInterstitial();
 						var url = "home.html";
 						window.location.href = url;
 						},

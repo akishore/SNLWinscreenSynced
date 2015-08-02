@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		
 	<script src="js/anijs-min.js"></script> 
-	<script src="js/admob.js"></script> 
+
 	<link rel="stylesheet" type="text/css" href="animate.css" />
 	<script type="text/javascript" src="phonegap.js"></script>
 	
@@ -43,26 +43,52 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	// admob script begin
+	var admobid = {};
+
+	if( /(android)/i.test(navigator.userAgent) ) { 
+		admobid = { // for Android
+			banner: 'ca-app-pub-6973712345433846/5193390011',
+			interstitial: 'ca-app-pub-6973712345433846/9623589610'
+		};
+	}
+	function initApp() {
+		if (AdMob) {
+			AdMob.createBanner({
+				adId : admobid.banner,
+				position : AdMob.AD_POSITION.BOTTOM_CENTER,
+				autoShow : true
+			});
+			AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+		}
+	}
+	document.addEventListener('deviceready', initApp, false);
+	// admob end
+	
 	var my_media;
 		$(function () {
             $("#OnePlayer").bind("click", function () {
 				my_media.pause();
 				playAudio('ClickAudio');
+				if(AdMob) AdMob.showInterstitial();
 				afterClickEvent("#OnePlayer");      
             });
             $("#TwoPlayers").bind("click", function () {
 				my_media.pause();
 				playAudio('ClickAudio');
+				if(AdMob) AdMob.showInterstitial();
 				afterClickEvent("#TwoPlayers");                
             });
             $("#ThreePlayers").bind("click", function () {
 				my_media.pause();
 				playAudio('ClickAudio');
+				if(AdMob) AdMob.showInterstitial();
 				afterClickEvent("#ThreePlayers");
             });
             $("#FourPlayers").bind("click", function () {
 				my_media.pause();
 				playAudio('ClickAudio');
+				if(AdMob) AdMob.showInterstitial();
 				afterClickEvent("#FourPlayers");
             });	
 			

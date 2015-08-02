@@ -42,7 +42,7 @@ function initApp() {
     });
 }
 */
-//coppy
+//copy
 	function initApp() {
 		if (AdMob) {
 			AdMob.createBanner({
@@ -50,11 +50,6 @@ function initApp() {
 				position : AdMob.AD_POSITION.BOTTOM_CENTER,
 				autoShow : true
 			});
-			AdMob.prepareInterstitial({
-				adId: admobid.interstitial,
-				autoShow: true
-			});
-			
 		}
 	}
 

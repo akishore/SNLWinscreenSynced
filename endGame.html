@@ -39,6 +39,29 @@
 		</div>
 	</div>
 	<script>
+	
+		// admob script begin
+		var admobid = {};
+
+		if( /(android)/i.test(navigator.userAgent) ) { 
+			admobid = { // for Android
+				banner: 'ca-app-pub-6973712345433846/5193390011',
+				interstitial: 'ca-app-pub-6973712345433846/9623589610'
+			};
+		}
+		function initApp() {
+			if (AdMob) {
+				AdMob.createBanner({
+					adId : admobid.banner,
+					position : AdMob.AD_POSITION.BOTTOM_CENTER,
+					autoShow : true
+				});
+				AdMob.prepareInterstitial( {adId:admobid.interstitial, autoShow:false} );
+			}
+		}
+		document.addEventListener('deviceready', initApp, false);
+		// admob end
+	
 		var my_media;
 		var queryString = new Array();
 		if(queryString.length === 0){
@@ -73,6 +96,7 @@
 				playAudio('ClickAudio');
 //				document.getElementById('VictoryAudio').pause();
 //				document.getElementById('ClickAudio').play();
+				if(AdMob) AdMob.showInterstitial();
 				setTimeout(function(){
 						var url = "game.html?playerNum=" + queryString["num"];
 						window.location.href = url;
@@ -86,6 +110,7 @@
 //				document.getElementById('ClickAudio').play();
 				my_media.pause();
 				playAudio('ClickAudio');
+				if(AdMob) AdMob.showInterstitial();
 				setTimeout(function(){
 						var url = "home.html";
 						window.location.href = url;

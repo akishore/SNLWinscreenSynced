@@ -52,7 +52,7 @@ function initApp() {
 			});
 			AdMob.prepareInterstitial({
 				adId: admobid.interstitial,
-				autoShow: false
+				autoShow: true
 			});
 			
 		}

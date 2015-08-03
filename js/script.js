@@ -430,7 +430,7 @@ var teleport = [
 			setTimeout(function(){
 				playAudio("DiceRollAudio");
 				ranValueOnCanvas(ran);
-			},1500);
+			},500);
 			game();
 		}
 	}

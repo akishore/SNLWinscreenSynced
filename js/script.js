@@ -203,7 +203,6 @@ var teleport = [
 					
 					stage.addChild(containerTurn); 
 					stage.update();
-					playAudio("DiceRollAudio");
 				},1200);
 				
 				ran = Math.floor(Math.random() * 6) + 1;
@@ -212,6 +211,7 @@ var teleport = [
 				lineNumber = player[activePlayer].lineNumber;
 				
 				setTimeout(function(){
+					playAudio("DiceRollAudio");
 					ranValueOnCanvas(ran);
 					game();
 				},2000);
@@ -428,6 +428,7 @@ var teleport = [
 		if (playerNum === "1" && activePlayer === 1){
 			ran = Math.floor(Math.random() * 6) + 1;
 			setTimeout(function(){
+				playAudio("DiceRollAudio");
 				ranValueOnCanvas(ran);
 			},1500);
 			game();
@@ -467,9 +468,11 @@ var teleport = [
 			endLocation = player[activePlayer].currentLocation + steps;
 			if (playerNum === "1" && activePlayer === 1){
 				ran = Math.floor(Math.random() * 6) + 1;
+				
 				setTimeout(function(){
+					playAudio("DiceRollAudio");
 					ranValueOnCanvas(ran);
-				},1000);
+				},1500);
 				game();
 			}
 		}

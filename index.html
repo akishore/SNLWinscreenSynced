@@ -14,15 +14,20 @@
 		var viewportScale = 1 / window.devicePixelRatio;
 		$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
 		</script> -->
-		
-			<!--//if (screen.width <= 720){
-				//var viewPortElem = document.getElementById('viewPortElement');
-				//viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi')
-			//}
-			//else{
-				//var viewPortElem = document.getElementById('viewPortElement');
-				//viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi')
-			//} -->
+		<script>
+			if (screen.width >= 720){
+				var viewPortElem = document.getElementById('viewPortElement');
+				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=high-dpi')
+			}
+			else if (screen.width < 720 && screen.width > 480){
+				var viewPortElem = document.getElementById('viewPortElement');
+				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi')
+			}
+			else{
+				var viewPortElem = document.getElementById('viewPortElement');
+				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi')
+			}
+		</script>
 		
     </head>
 	

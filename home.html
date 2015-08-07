@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script src="js/anijs-min.js"></script>
 		<link rel="stylesheet" type="text/css" href="animate.css" />
-		<script type="text/javascript" src="phonegap.js"></script>
+		<!-- <script type="text/javascript" src="phonegap.js"></script> -->
 		<!-- <script>
 			var viewportScale = 1 / window.devicePixelRatio;
 			$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
@@ -69,9 +69,9 @@
 	var my_media;
 		$(function () {
             $("#OnePlayer").bind("click", function () {
-				my_media.pause();
-				playAudio('ClickAudio');
-				if(AdMob) AdMob.showInterstitial();
+				//my_media.pause();
+				//playAudio('ClickAudio');
+				//if(AdMob) AdMob.showInterstitial();
 				afterClickEvent("#OnePlayer");      
             });
             $("#TwoPlayers").bind("click", function () {
@@ -107,7 +107,7 @@
 			AniJS.run();
 			var viewportScale = 1 / window.devicePixelRatio;
 			$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
-			playAudio('PageLoadAudio');
+			//playAudio('PageLoadAudio');
 		}
 		var playAudio = function(audioID) {
 		var audioElement = document.getElementById(audioID);

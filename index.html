@@ -17,15 +17,15 @@
 		<script>
 			if (screen.width >= 720){
 				var viewPortElem = document.getElementById('viewport');
-				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=high-dpi')
+				viewPortElem.setAttribute('content','user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=high-dpi')
 			}
 			else if (screen.width < 720 && screen.width > 480){
 				var viewPortElem = document.getElementById('viewport');
-				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi')
+				viewPortElem.setAttribute('content','user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi')
 			}
 			else{
 				var viewPortElem = document.getElementById('viewport');
-				viewPortElem.setAttribute('content','user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi')
+				viewPortElem.setAttribute('content','user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi')
 			}
 		</script>
 		

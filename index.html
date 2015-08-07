@@ -10,10 +10,10 @@
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script src="js/anijs-min.js"></script> 
 		<script src="js/admob.js"></script> 
-		<script>
+		<!-- <script>
 		var viewportScale = 1 / window.devicePixelRatio;
 		$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
-		</script>
+		</script> -->
 		
 			<!--//if (screen.width <= 720){
 				//var viewPortElem = document.getElementById('viewPortElement');
@@ -43,6 +43,8 @@
 				function scriptFunction() {
 					//AniJS.run();
 					//document.getElementById('PageLoadAudio').play();
+					var viewportScale = 1 / window.devicePixelRatio;
+					$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
 					playAudio();
 				}
 				

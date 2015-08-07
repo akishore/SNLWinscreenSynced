@@ -12,10 +12,10 @@
 		<script src="js/anijs-min.js"></script>
 		<link rel="stylesheet" type="text/css" href="animate.css" />
 		<script type="text/javascript" src="phonegap.js"></script>
-		<script>
+		<!-- <script>
 			var viewportScale = 1 / window.devicePixelRatio;
 			$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
-		</script>
+		</script> -->
 	</head>
 	
 	<body onload="scriptFunction()">
@@ -105,6 +105,8 @@
 
 		function scriptFunction() {
 			AniJS.run();
+			var viewportScale = 1 / window.devicePixelRatio;
+			$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
 			playAudio('PageLoadAudio');
 		}
 		var playAudio = function(audioID) {

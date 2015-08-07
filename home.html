@@ -1,19 +1,21 @@
 <html>
 	<head>
 		<title>Snakes and Ladder Game</title>
-		<meta id="viewPortElement" name="viewport" content="initial-scale=1+1/device-pixel-ratio, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta id="viewport" name="viewport" content="" />
+		<!-- <meta id="viewPortElement" name="viewport" content="initial-scale=1+1/device-pixel-ratio, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/easeljs-0.8.0.min.js"></script>
 		<script src="js/tweenjs-0.6.0.min.js"></script>
 		<script type="text/javascript" src="js/CSSPlugin.js"></script>
 		<!--<link href='http://fonts.googleapis.com/css?family=Raleway|Audiowide' rel='stylesheet' type='text/css'> -->
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		
-	<script src="js/anijs-min.js"></script> 
-
-	<link rel="stylesheet" type="text/css" href="animate.css" />
-	<script type="text/javascript" src="phonegap.js"></script>
-	
+		<script src="js/anijs-min.js"></script>
+		<link rel="stylesheet" type="text/css" href="animate.css" />
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script>
+			var viewportScale = 1 / window.devicePixelRatio;
+			$("#viewport").attr("content","user-scalable=no, initial-scale="+viewportScale+", minimum-scale=0.2, maximum-scale=2, width=device-width");
+		</script>
 	</head>
 	
 	<body onload="scriptFunction()">

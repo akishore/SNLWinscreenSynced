@@ -60,11 +60,11 @@ img, embed, object, video {
 #parentContainer {
 	margin-left:auto;
 	margin-right:auto;
-	width: 1120px;
+	width: 1120dp;
 }
 .playerName {
 	font-family: 'Audiowide', cursive;
-	font-size: 16px;
+	font-size: 16sp;
 	letter-spacing: 1px;
 	text-shadow: 4px 4px 4px #aaa;
 	width:100%;
@@ -83,11 +83,11 @@ img, embed, object, video {
 }
 #leftCol {
 	float: left;
-	height: 720px;
+	height: 720dp;
 }
 #rightCol {
 	float: left;
-	height: 720px;
+	height: 720dp;
 }
 #canvasContainer {
 	width:720px;
